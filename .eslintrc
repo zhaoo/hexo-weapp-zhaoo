@@ -1,0 +1,20 @@
+{
+  "extends": ["taro"],
+  "rules": {
+    // "@typescript-eslint/no-unused-vars": ["error", {
+    //   "varsIgnorePattern": "Taro"
+    // }],
+    "no-unused-vars": "off",
+    "react/jsx-filename-extension": [1, {
+      "extensions": [".js", ".jsx", ".tsx"]
+    }]
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "useJSXTextNode": true,
+    "project": "./tsconfig.json"
+  }
+}

@@ -1,0 +1,17 @@
+/* weapp */
+
+page {
+  height: 100%;
+}
+
+view,
+text,
+scroll-view {
+  box-sizing: border-box;
+}
+
+button {
+  &:after {
+    display: none;
+  }
+}
