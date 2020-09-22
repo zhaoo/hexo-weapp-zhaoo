@@ -1,8 +1,8 @@
-import Taro, { useState, useEffect } from '@tarojs/taro'
+import React, { useState, useEffect } from 'react'
 import { ScrollView } from '@tarojs/components'
 import { getPosts } from '@/utils/api'
 import PostItem from '@/components/post-item'
-import './index.scss'
+import './home.scss'
 
 export default function Index() {
   const [posts, setPosts] = useState([])
@@ -19,8 +19,4 @@ export default function Index() {
       return (<PostItem item={item} key={item.slug} />)
     })}
   </ScrollView>)
-}
-
-Index.config = {
-  navigationBarTitleText: '首页'
 }

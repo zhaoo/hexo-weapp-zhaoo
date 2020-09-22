@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import React, { useState, useEffect } from 'react'
 import { View, Image, Text } from '@tarojs/components'
 import { date } from '@/utils/date'
 import './index.scss'
@@ -14,10 +14,4 @@ export default function PostItem(props: { item }) {
       </View>
     </View>
   </View>)
-}
-
-PostItem.defaultProps = {
-  item: {
-    date: new Date()
-  }
 }
