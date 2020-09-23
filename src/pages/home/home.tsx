@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ScrollView } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { getPosts } from '@/utils/api'
 import PostItem from '@/components/post-item'
 import './home.scss'
@@ -14,9 +14,9 @@ export default function Index() {
     })()
   }, [])
 
-  return (<ScrollView scrollY className='index'>
+  return (<View className='index'>
     {posts && posts.map((item: any) => {
       return (<PostItem item={item} key={item.slug} />)
     })}
-  </ScrollView>)
+  </View>)
 }

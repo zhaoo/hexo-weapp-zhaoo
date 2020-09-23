@@ -3,6 +3,7 @@ export default {
     'pages/home/home',
     'pages/categories/categories',
     'pages/galleries/galleries',
+    'pages/post/post',
   ],
   window: {
     backgroundTextStyle: 'light',
