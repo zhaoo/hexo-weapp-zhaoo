@@ -1,7 +1,11 @@
+@import './variable.scss';
+
 /* weapp */
 
 page {
   height: 100%;
+  color: $color-default;
+  font-family: 'Hiragino Sans GB', 'Hiragino Sans GB W3', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
 }
 
 view,

@@ -25,7 +25,7 @@ export default function Post() {
 
   return (<View className='post'>
     <View className='head'>
-      <Image src={post.cover} lazyLoad mode='scaleToFill' className='cover' />
+      <Image src={post.cover} lazyLoad mode='widthFix' className='cover' />
       <View className='mask'>
         <Text className='title'>{post.title}</Text>
         <View className='info'>

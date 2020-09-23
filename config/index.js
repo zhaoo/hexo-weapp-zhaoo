@@ -14,8 +14,8 @@ const config = {
   },
   sass: {
     resource: [
-      'src/styles/variable.scss',
-      'src/styles/reset.scss'
+      'src/styles/reset.scss',
+      'src/styles/variable.scss'
     ],
     projectDirectory: path.resolve(__dirname, '..')
   },
