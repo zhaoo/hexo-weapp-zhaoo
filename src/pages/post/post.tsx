@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getCurrentInstance } from '@tarojs/taro'
 import { View, Image, Text } from '@tarojs/components'
+import Iconfont from '@/components/iconfont'
 import { date } from '@/utils/date'
 import { getPostBySlug } from '@/utils/api'
 import './post.scss'
@@ -29,7 +30,10 @@ export default function Post() {
       <View className='mask'>
         <Text className='title'>{post.title}</Text>
         <View className='info'>
-          <Text>{date(post.date)}</Text>
+          <Text>
+            <Iconfont name='iconcalendar' />
+            {date(post.date)}
+          </Text>
         </View>
       </View>
     </View>

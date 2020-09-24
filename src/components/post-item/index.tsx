@@ -2,6 +2,7 @@ import React from 'react'
 import Taro from '@tarojs/taro'
 import { View, Image, Text } from '@tarojs/components'
 import { date } from '@/utils/date'
+import Iconfont from '@/components/iconfont'
 import './index.scss'
 
 export default function PostItem(props: { item }) {
@@ -11,7 +12,10 @@ export default function PostItem(props: { item }) {
     <View className='content'>
       <Text className='title'>{item.title}</Text>
       <View className='info'>
-        <Text>{date(item.date)}</Text>
+        <Text>
+          <Iconfont name='iconcalendar' />
+          {date(item.date)}
+        </Text>
       </View>
     </View>
   </View>)
