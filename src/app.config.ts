@@ -4,6 +4,7 @@ export default {
     'pages/categories/categories',
     'pages/galleries/galleries',
     'pages/post/post',
+    'pages/webview/webview',
   ],
   window: {
     backgroundTextStyle: 'light',

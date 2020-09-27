@@ -8,9 +8,12 @@ import './index.scss'
 export default function PostItem(props: { item }) {
   const { item } = props
   return (<View className='post-item' onClick={() => { Taro.navigateTo({ url: `/pages/post/post?slug=${item.slug}` }) }}>
-    <Image src={item.cover} lazyLoad mode='widthFix' className='cover' />
+    <Image src={item.cover} lazyLoad className='cover' />
     <View className='content'>
       <Text className='title'>{item.title}</Text>
+      <View className='excerpt'>
+        <Text>{item.excerpt}</Text>
+      </View>
       <View className='info'>
         <Text>
           <Iconfont name='iconcalendar' />

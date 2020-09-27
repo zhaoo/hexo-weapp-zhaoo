@@ -3,9 +3,11 @@
   width: 100%;
   margin-bottom: 30px;
   display: flex;
+  height: calc(100vw * 0.3);
 
   .cover {
     width: 40%;
+    height: 100%;
   }
 
   .content {
@@ -16,12 +18,23 @@
     justify-content: space-between;
 
     .title {
-      font-size: 1.2rem;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .excerpt {
+      height: 100%;
+      text {
+        font-size: 0.8rem;
+        color: $color-middle;
+        @include substr(2);
+      }
     }
 
     .info {
       font-size: 0.8rem;
-      color: $color-middle;
+      color: $color-light;
+
       .iconfont {
         margin-right: 5px;
       }

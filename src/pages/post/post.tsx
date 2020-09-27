@@ -13,6 +13,11 @@ interface IPost {
   date: string
 }
 
+const replaceHtml = (data) => {
+  data = data.replace(/\<img/gi, '<img mode="widthFix" lazy-load')
+  return data
+}
+
 export default function Post() {
   const [post, setPost] = useState<IPost>({ date: new Date().toDateString() })
 
@@ -20,13 +25,14 @@ export default function Post() {
     (async () => {
       const { slug } = getCurrentInstance().router.params
       const { data } = await getPostBySlug(slug)
+      data.more = replaceHtml(data.more)
       setPost(data)
     })()
   }, [])
 
   return (<View className='post'>
     <View className='head'>
-      <Image src={post.cover} lazyLoad mode='widthFix' className='cover' />
+      <Image src={post.cover} lazyLoad className='cover' mode='aspectFill' />
       <View className='mask'>
         <Text className='title'>{post.title}</Text>
         <View className='info'>
