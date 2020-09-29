@@ -24,7 +24,7 @@ export default function Post() {
   useEffect(() => {
     (async () => {
       const { slug } = getCurrentInstance().router.params
-      const { data } = await getPostBySlug(slug)
+      const data = await getPostBySlug(slug)
       data.more = replaceHtml(data.more)
       setPost(data)
     })()

@@ -1,3 +1,8 @@
 {
-  'extends': ['taro/react']
+  "extends": [
+    "taro/react"
+  ],
+  "rules": {
+    "react-hooks/exhaustive-deps": 0
+  }
 }

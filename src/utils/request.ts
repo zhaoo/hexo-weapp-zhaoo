@@ -1,10 +1,10 @@
 import Taro from '@tarojs/taro'
-import { BASE_URL } from '@/config'
-import { HTTP_STATUS } from '@/constants'
+import { BASE_URL } from '@/config/index'
+import { HTTP_STATUS } from '@/constants/index'
 
 type Method = 'OPTIONS' | 'GET' | 'HEAD' | 'POST' | 'PUT' | 'DELETE' | 'TRACE' | 'CONNECT'
 
-const request = (url: string, data?: any, method: Method = 'GET', headers = {}) => {
+const request = async (url: string, data?: any, method: Method = 'GET', headers = {}) => {
   const option = {
     url: BASE_URL + url,
     data,
@@ -12,19 +12,19 @@ const request = (url: string, data?: any, method: Method = 'GET', headers = {}) 
     header: {
       'content-type': 'application/json;charset=utf-8',
       ...headers
-    },
-    success: (res) => {
-      if (res.statusCode === HTTP_STATUS.SUCCESS) {
-        return res.data
-      }
-      const msg = `Error: code ${res.statusCode}`
-      throw new Error(msg)
-    },
-    fail: ({ error }) => {
-      console.error(error)
     }
   }
   return Taro.request(option)
+    .then(({ statusCode, data }) => {
+      if (statusCode === HTTP_STATUS.SUCCESS) {
+        return data
+      }
+      const msg = `Error: code ${statusCode}`
+      throw new Error(msg)
+    })
+    .catch(({ error }) => {
+      console.error(error)
+    })
 }
 
 const get = (url, data = {}, headers = {}) => {
