@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getCurrentInstance } from '@tarojs/taro'
+import Taro, { getCurrentInstance } from '@tarojs/taro'
 import { View, Image, Text } from '@tarojs/components'
 import Iconfont from '@/components/iconfont'
 import { date } from '@/utils/date'
@@ -25,8 +25,10 @@ export default function Post() {
     (async () => {
       const { slug } = getCurrentInstance().router.params
       const data = await getPostBySlug(slug)
-      data.more = replaceHtml(data.more)
+      const { more, title } = data
+      data.more = replaceHtml(more)
       setPost(data)
+      Taro.setNavigationBarTitle({ title })
     })()
   }, [])
 

@@ -12,25 +12,23 @@ export default function usePagination() {
       (async () => {
         const { data, pageCount } = await getPosts(pageSize)
         currData ? setData(currData.concat(data)) : setData(data)
-        if (data.length < pageCount) {
-          setHasMore(false)
-        }
+        if (data.length < pageCount) setHasMore(false)
       })()
     }
   }, [pageSize])
 
-  useReachBottom(() => {
-    getMoreData()
-  })
+  useReachBottom(() => (getMoreData()))
 
   usePullDownRefresh(() => (refresh()))
 
   const getMoreData = () => (setPageSize(pageSize + 1))
 
   const refresh = () => {
+    if (pageSize === 1) return;
     setData(null)
+    setHasMore(true)
     setPageSize(1)
   }
 
-  return [currData]
+  return [currData, hasMore, refresh]
 }

@@ -1,4 +1,11 @@
 .home {
   background-color: $color-background-deep;
   padding: 30px;
+  min-height: 100vh;
+
+  .none {
+    text-align: center;
+    font-size: 0.8rem;
+    color: $color-light;
+  }
 }
