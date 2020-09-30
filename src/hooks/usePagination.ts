@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useReachBottom, usePullDownRefresh } from '@tarojs/taro'
+import Taro, { useReachBottom, usePullDownRefresh } from '@tarojs/taro'
 import { getPosts } from '@/utils/api'
 
 export default function usePagination() {
@@ -19,7 +19,10 @@ export default function usePagination() {
 
   useReachBottom(() => (getMoreData()))
 
-  usePullDownRefresh(() => (refresh()))
+  usePullDownRefresh(() => {
+    refresh()
+    Taro.stopPullDownRefresh()
+  })
 
   const getMoreData = () => (setPageSize(pageSize + 1))
 
