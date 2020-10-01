@@ -4,34 +4,34 @@ import { getPosts } from '@/utils/api'
 
 export default function usePagination() {
   const [currData, setData] = useState(null)
-  const [pageSize, setPageSize] = useState(1)
+  const [pageSize, setPageSize] = useState([1])
   const [hasMore, setHasMore] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     if (hasMore) {
+      setIsLoading(true);
       (async () => {
-        const { data, pageCount } = await getPosts(pageSize)
+        const { data, pageCount } = await getPosts(pageSize[0])
         currData ? setData(currData.concat(data)) : setData(data)
         if (data.length < pageCount) setHasMore(false)
+        setIsLoading(false)
+        Taro.stopPullDownRefresh()
       })()
     }
   }, [pageSize])
 
   useReachBottom(() => (getMoreData()))
 
-  usePullDownRefresh(() => {
-    refresh()
-    Taro.stopPullDownRefresh()
-  })
+  usePullDownRefresh(() => (refresh()))
 
-  const getMoreData = () => (setPageSize(pageSize + 1))
+  const getMoreData = () => (setPageSize([pageSize[0] + 1]))
 
   const refresh = () => {
-    if (pageSize === 1) return;
     setData(null)
     setHasMore(true)
-    setPageSize(1)
+    setPageSize([1])
   }
 
-  return [currData, hasMore, refresh]
+  return [currData, hasMore, isLoading]
 }

@@ -6,6 +6,6 @@ import './index.scss'
 export default function Empty() {
   return (<View className='empty'>
     <Iconfont name='iconfile-text' />
-    <Text className='tips'>--- 暂无文章 ---</Text>
+    <Text className='tips'>暂无文章</Text>
   </View>)
 }

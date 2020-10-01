@@ -1,0 +1,29 @@
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+
+  .circle {
+    animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    margin-right: 10px;
+
+    .iconfont {
+      color: $color-light;
+      font-weight: bold;
+    }
+  }
+
+  .tips {
+    color: $color-light;
+  }
+}
