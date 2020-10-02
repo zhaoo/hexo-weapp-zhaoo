@@ -25,6 +25,7 @@
 
       .info {
         color: $color-white;
+
         .iconfont {
           margin-right: 5px;
         }
@@ -39,9 +40,9 @@
 
     @for $i from 1 through 6 {
       .h#{$i} {
-        font-size: 1.6 - $i * 0.1 em;
-        margin-bottom: 1em;
-        margin-top: 2em;
+        font-size: 1.6 - $i * 0.1rem;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
         color: $color-default;
         font-weight: bold;
       }
@@ -95,25 +96,30 @@
       margin: 0;
       overflow: auto;
       margin-bottom: 20px;
+      font-size: 0.8rem;
 
-      .code {
-        padding: 0;
+      .table {
         border: none;
 
-        .code {
-          background-color: $color-background-deep;
-          padding: 1em;
-        }
+        .td {
+          padding: 0;
 
-        .gutter {
-          display: none;
-        }
+          &.gutter {
+            display: none;
+          }
 
-        .table,
-        .pre {
-          margin: 0;
-          text-align: left;
-          border: 0;
+          &.code {
+            background-color: $color-background-deep;
+            padding: 1em;
+            border: none;
+          }
+
+          .table,
+          .pre {
+            margin: 0;
+            text-align: left;
+            border: 0;
+          }
         }
       }
     }

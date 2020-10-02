@@ -13,24 +13,26 @@ interface IPost {
   date: string
 }
 
-const replaceHtml = (data) => {
-  data = data.replace(/\<img/gi, '<img mode="widthFix" lazy-load')
-  return data
-}
-
 export default function Post() {
   const [post, setPost] = useState<IPost>({ date: new Date().toDateString() })
 
   useEffect(() => {
-    (async () => {
-      const { slug } = getCurrentInstance().router.params
-      const data = await getPostBySlug(slug)
-      const { more, title } = data
-      data.more = replaceHtml(more)
-      setPost(data)
-      Taro.setNavigationBarTitle({ title })
-    })()
+    getPost()
   }, [])
+
+  const replaceHTML = (data) => {
+    data = data.replace(/\<img/gi, "<img mode='widthFix' id='image' lazy-load")
+    return data
+  }
+  
+  const getPost = async () => {
+    const { slug } = getCurrentInstance().router.params
+    const data = await getPostBySlug(slug)
+    const { more, title } = data
+    data.more = replaceHTML(more)
+    setPost(data)
+    Taro.setNavigationBarTitle({ title })
+  }
 
   return (<View className='post'>
     <View className='head'>

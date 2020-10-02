@@ -11,19 +11,21 @@ export default function usePagination() {
   useEffect(() => {
     if (hasMore) {
       setIsLoading(true);
-      (async () => {
-        const { data, pageCount } = await getPosts(pageSize[0])
-        currData ? setData(currData.concat(data)) : setData(data)
-        if (data.length < pageCount) setHasMore(false)
-        setIsLoading(false)
-        Taro.stopPullDownRefresh()
-      })()
+      getData()
     }
   }, [pageSize])
 
   useReachBottom(() => (getMoreData()))
 
   usePullDownRefresh(() => (refresh()))
+
+  const getData = async () => {
+    const { data, pageCount } = await getPosts(pageSize[0])
+    currData ? setData(currData.concat(data)) : setData(data)
+    if (data.length < pageCount) setHasMore(false)
+    setIsLoading(false)
+    Taro.stopPullDownRefresh()
+  }
 
   const getMoreData = () => (setPageSize([pageSize[0] + 1]))
 
