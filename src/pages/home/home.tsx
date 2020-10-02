@@ -16,12 +16,17 @@ export default function Index() {
           {posts.map((item: any) => {
             return (<PostItem item={item} key={item.slug} />)
           })}
-          {isLoading && (<Loading />)}
-          {!hasMore && (<View className='none'>--- 我也是有底线的 ---</View>)}
+          <View className='loading-wrap'>
+            <Loading isLoading={isLoading} />
+          </View>
+          {!hasMore && (
+            <View className='none'>--- 我也是有底线的 ---</View>
+          )}
         </View>
       ) : (
           <Empty />
-        )}
-    </Block>
+        )
+      }
+    </Block >
   )
 }

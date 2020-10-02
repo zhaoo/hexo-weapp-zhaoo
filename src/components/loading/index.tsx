@@ -1,13 +1,12 @@
 import React from 'react'
-import { View, Text } from '@tarojs/components'
-import Iconfont from '@/components/iconfont'
+import { View } from '@tarojs/components'
 import './index.scss'
 
-export default function Loading() {
-  return (<View className='loading'>
-    <View className='circle'>
-      <Iconfont name='iconload' />
-    </View>
-    <Text className='tips'>loading...</Text>
+export default function Loading(props: { isLoading }) {
+  const { isLoading } = props
+
+  return (isLoading && <View className='loading'>
+    <View className='double-bounce1'></View>
+    <View className='double-bounce2'></View>
   </View>)
 }

@@ -3,9 +3,22 @@
   padding: 30px;
   min-height: 100vh;
 
+  .loading-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+
+    .loading {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
   .none {
     text-align: center;
     font-size: 0.8rem;
     color: $color-light;
+    margin-bottom: 30px;
   }
 }
