@@ -11,7 +11,7 @@ export default function usePagination() {
   useEffect(() => {
     if (hasMore) {
       setIsLoading(true);
-      getData()
+      fetchData()
     }
   }, [pageSize])
 
@@ -19,7 +19,7 @@ export default function usePagination() {
 
   usePullDownRefresh(() => (refresh()))
 
-  const getData = async () => {
+  const fetchData = async () => {
     const { data, pageCount } = await getPosts(pageSize[0])
     currData ? setData(currData.concat(data)) : setData(data)
     if (data.length < pageCount) setHasMore(false)

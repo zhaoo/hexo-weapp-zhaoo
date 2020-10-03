@@ -1,0 +1,8 @@
+.categories {
+  background-color: $color-background-deep;
+  padding: 30px;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
+}

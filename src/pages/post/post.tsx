@@ -17,7 +17,7 @@ export default function Post() {
   const [post, setPost] = useState<IPost>({ date: new Date().toDateString() })
 
   useEffect(() => {
-    getPost()
+    fetchPost()
   }, [])
 
   const replaceHTML = (data) => {
@@ -25,7 +25,7 @@ export default function Post() {
     return data
   }
   
-  const getPost = async () => {
+  const fetchPost = async () => {
     const { slug } = getCurrentInstance().router.params
     const data = await getPostBySlug(slug)
     const { more, title } = data
