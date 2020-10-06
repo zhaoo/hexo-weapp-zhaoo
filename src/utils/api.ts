@@ -16,4 +16,8 @@ const getCategories = () => {
   return get(`/categories.json`)
 }
 
-export { getConfig, getPosts, getPostBySlug, getCategories }
+const getGalleries = () => {
+  return get(`/galleries.json`)
+}
+
+export { getConfig, getPosts, getPostBySlug, getCategories, getGalleries }

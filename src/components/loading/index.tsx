@@ -5,8 +5,12 @@ import './index.scss'
 export default function Loading(props: { isLoading }) {
   const { isLoading } = props
 
-  return (isLoading && <View className='loading'>
-    <View className='double-bounce1'></View>
-    <View className='double-bounce2'></View>
+  return (<View className='loading-wrap'>
+    {isLoading && (
+      <View className='loading'>
+        <View className='double-bounce1'></View>
+        <View className='double-bounce2'></View>
+      </View>
+    )}
   </View>)
 }
