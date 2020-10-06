@@ -21,7 +21,7 @@ export default function Index() {
           {!hasMore && (<Divider text='我也是有底线的' />)}
         </View>
       ) : (
-          <Empty />
+          <Empty text='暂无文章' />
         )
       }
     </Block >

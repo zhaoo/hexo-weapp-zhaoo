@@ -1,11 +1,12 @@
 import React from 'react'
-import { View, Text } from '@tarojs/components'
-import Iconfont from '@/components/iconfont'
+import { View, Text, Image } from '@tarojs/components'
+import emptyImage from '@/assets/images/empty.png'
 import './index.scss'
 
-export default function Empty() {
+export default function Empty(props: { text?: string }) {
+  const { text } = props
   return (<View className='empty'>
-    <Iconfont name='iconfile-text' />
-    <Text className='tips'>暂无文章</Text>
+    <Image src={emptyImage} />
+    <Text className='tips'>{text}</Text>
   </View>)
 }

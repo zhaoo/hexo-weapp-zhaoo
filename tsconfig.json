@@ -30,7 +30,7 @@
       "@/constants/*": ["src/constants/*"],
       "@/config/*": ["src/config/*"],
       "@/assets/*": ["src/assets/*"],
-      "@/styles/*": ["src/styles/*"]
+      "@/styles/*": ["src/styles/*"],
     }
   },
   "exclude": [

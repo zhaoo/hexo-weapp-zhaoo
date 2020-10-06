@@ -3,6 +3,7 @@ import Taro, { getCurrentInstance } from '@tarojs/taro'
 import { View, Block, Image, Text } from '@tarojs/components'
 import PostItem from '@/components/post_item'
 import Empty from '@/components/empty'
+import Divider from '@/components/divider'
 import { get } from '@/utils/request'
 import './category_list.scss'
 
@@ -35,11 +36,11 @@ export default function CategoryList() {
             {posts.map((item: any) => {
               return (<PostItem item={item} key={item.slug} />)
             })}
-            <View className='none'>--- 我也是有底线的 ---</View>
+            <Divider text='我也是有底线的' />
           </View>
         </View>
       ) : (
-          <Empty />
+          <Empty text='暂无文章' />
         )
       }
     </Block >
