@@ -4,6 +4,7 @@ export default {
     'pages/categories/categories',
     'pages/categories/category_list/category_list',
     'pages/galleries/galleries',
+    'pages/galleries/gallery/gallery',
     'pages/post/post',
     'pages/webview/webview',
   ],

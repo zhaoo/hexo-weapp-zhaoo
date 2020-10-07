@@ -20,4 +20,15 @@ const getGalleries = () => {
   return get(`/galleries.json`)
 }
 
-export { getConfig, getPosts, getPostBySlug, getCategories, getGalleries }
+const getGalleryByName = (name) => {
+  return get(`/galleries/${name}.json`)
+}
+
+export { 
+  getConfig, 
+  getPosts, 
+  getPostBySlug, 
+  getCategories, 
+  getGalleries,
+  getGalleryByName
+}

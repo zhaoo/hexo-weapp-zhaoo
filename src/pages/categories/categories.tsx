@@ -23,8 +23,10 @@ export default function Categories() {
   }
 
   return (<View className='categories'>
-    {categories && categories.map((item: any) => {
-      return (<CategoryItem item={item} key={item.name} />)
-    })}
+    <View className='grid'>
+      {categories && categories.map((item: any) => {
+        return (<CategoryItem item={item} key={item.name} />)
+      })}
+    </View>
   </View>)
 }

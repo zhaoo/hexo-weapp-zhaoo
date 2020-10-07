@@ -1,12 +1,16 @@
-.categories {
+.gallery {
   background-color: $color-background-deep;
-  padding: 30px;
   min-height: 100vh;
+  padding: 10px;
 
   .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 30px;
-    min-height: 100vh;
+    grid-gap: 10px;
+
+    .photo {
+      width: 100%;
+      height: calc((100vw - 30px) / 2);
+    }
   }
 }
