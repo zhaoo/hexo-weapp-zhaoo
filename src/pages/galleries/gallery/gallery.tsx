@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Taro, { getCurrentInstance } from '@tarojs/taro'
-import { View, Image } from '@tarojs/components'
+import { View, Image, Text } from '@tarojs/components'
 import { getGalleryByName } from '@/utils/api'
 import './gallery.scss'
 
@@ -25,11 +25,24 @@ export default function Gallery() {
     setGallery(data)
   }
 
+  const handlePreviewImage = (current: string) => {
+    Taro.previewImage({
+      current,
+      urls: gallery.photos
+    })
+  }
+
   return (<View className='gallery'>
-    <View className='grid'>
-      {gallery && gallery.photos.map((item: string) => {
-        return (<Image src={item} key={item} lazyLoad className='photo' />)
-      })}
-    </View>
+    {gallery && (<View>
+      <View className='title'>
+        <Text className='name'>{gallery.name}</Text>
+        <Text className='description'>{gallery.description}</Text>
+      </View>
+      <View className='grid'>
+        {gallery.photos.map((item: string) => {
+          return (<Image src={item} key={item} lazyLoad className='photo' onClick={() => { handlePreviewImage(item) }} />)
+        })}
+      </View>
+    </View>)}
   </View>)
 }
