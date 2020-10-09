@@ -8,7 +8,7 @@ import { get } from '@/utils/request'
 import './category_list.scss'
 
 export default function CategoryList() {
-  const { path, name, count } = getCurrentInstance().router.params
+  const { path, name, count, image } = getCurrentInstance().router.params
   const [posts, setPosts] = useState(null)
 
   useEffect(() => {
@@ -26,10 +26,10 @@ export default function CategoryList() {
       {posts ? (
         <View className='category-list'>
           <View className='head'>
-            <Image src='https://pic.izhaoo.com/20200228081642.jpg' lazyLoad className='cover' mode='aspectFill' />
+            <Image src={image} lazyLoad className='cover' mode='aspectFill' />
             <View className='mask'>
               <Text className='name'>{name}</Text>
-              <Text className='count'>{`[${count}]`}</Text>
+              <Text className='count'>{`${count}篇文章`}</Text>
             </View>
           </View>
           <View className='content'>

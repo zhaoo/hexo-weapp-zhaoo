@@ -11,14 +11,14 @@ export default function CategoryItem(props: { item }) {
       className='category-item'
       onClick={() => {
         Taro.navigateTo({
-          url: `/pages/categories/category_list/category_list?path=${item.path}&name=${item.name}&count=${item.count}`
+          url: `/pages/categories/category_list/category_list?path=${item.path}&name=${item.name}&count=${item.count}&image=${item.image}`
         })
       }}
     >
-      <Image src='https://pic.izhaoo.com/20200228081642.jpg' lazyLoad className='cover' />
+      <Image src={item.image} lazyLoad className='cover' />
       <View className='content'>
         <Text className='name'>{item.name}</Text>
-        <Text className='count'>{`[${item.count}]`}</Text>
+        <Text className='count'>{`${item.count}篇文章`}</Text>
       </View>
     </View>
   )

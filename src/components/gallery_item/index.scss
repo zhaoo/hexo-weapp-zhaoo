@@ -1,4 +1,5 @@
 .gallery-item {
+  background-color: $color-white;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -9,13 +10,9 @@
   }
 
   .content {
-    padding: 20px 10px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-
-    .name {
-      font-size: 1rem;
-    }
 
     .count {
       font-size: 0.7rem;
