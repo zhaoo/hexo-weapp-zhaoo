@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/izhaoo/hexo-theme-zhaoo/" target="_blank" rel="noopener noreferrer">
-    <img src="./source/images/icons/zhaoo-logo.png" alt="zhaoo logo" width="100">
+    <img src="./screenshots/zhaoo-logo.png" alt="zhaoo logo" width="100">
   </a>
 </div>
 
