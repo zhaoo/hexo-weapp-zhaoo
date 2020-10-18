@@ -4,6 +4,12 @@
   margin-bottom: 30px;
   display: flex;
   height: calc(100vw * 0.3);
+  position: relative;
+
+  .top {
+    position: absolute;
+    right: 20px;
+  }
 
   .cover {
     width: 40%;
@@ -24,6 +30,7 @@
 
     .excerpt {
       height: 100%;
+
       text {
         font-size: 0.8rem;
         color: $color-middle;
