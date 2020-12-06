@@ -65,7 +65,7 @@ yarn  // 安装依赖
 
 // 修改 config.ts 中的配置
 
-yarn build  // 打包
+yarn build:weapp  // 打包
 ```
 
 使用微信开发者工具打开 `dist` 目录，上传代码完成发布。
