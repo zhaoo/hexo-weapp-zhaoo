@@ -61,6 +61,8 @@
 注册微信小程序，修改 `/project.config.json` 文件中的 `appid` 等字段，匹配小程序配置。
 
 ```bash
+npm install -g @tarojs/cli yarn  // 安装 Taro 和 yarn
+
 yarn  // 安装依赖
 
 // 修改 config.ts 中的配置
