@@ -15,8 +15,7 @@ export default function Index() {
       {posts ? (
         <View className='home'>
           {posts.map((item: any) => {
-           
-            return (<PostItem item={item} key={item && item.slug}  />)
+            return (<PostItem item={item} key={ item && item.slug} />)
           })}
           <Loading isLoading={isLoading} />
           {!hasMore && (<Divider text='我也是有底线的' />)}
