@@ -21,10 +21,13 @@ export default function Categories() {
 
   const fetchCategories = async () => {
     const data = await getCategories()
+
     const images = await randomImage(data.length)
+    
     for (let i in data) {
       data[i].image = images[i]
     }
+     
     setCategories(data)
   }
 

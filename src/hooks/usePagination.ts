@@ -20,9 +20,11 @@ export default function usePagination() {
   usePullDownRefresh(() => (refresh()))
 
   const fetchData = async () => {
-    const { data, pageCount } = await getPosts(pageSize[0])
+    const { data, pageCount, total } = await getPosts(pageSize[0])
+ 
     currData ? setData(currData.concat(data)) : setData(data)
-    if (data.length < pageCount) setHasMore(false)
+    
+    if ( !pageCount || !data || data.length < pageCount) setHasMore(false)
     setIsLoading(false)
     Taro.stopPullDownRefresh()
   }
@@ -35,5 +37,5 @@ export default function usePagination() {
     setPageSize([1])
   }
 
-  return [currData, hasMore, isLoading]
+  return [currData, hasMore, isLoading ]
 }

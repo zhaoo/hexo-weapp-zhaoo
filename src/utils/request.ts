@@ -17,6 +17,7 @@ const request = async (url: string, data?: any, method: Method = 'GET', headers 
   return Taro.request(option)
     .then(({ statusCode, data }) => {
       if (statusCode === HTTP_STATUS.SUCCESS) {
+      console.log(data)
         return data
       }
       const msg = `Error: code ${statusCode}`

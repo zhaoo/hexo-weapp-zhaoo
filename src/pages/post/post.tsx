@@ -5,6 +5,7 @@ import Iconfont from '@/components/iconfont'
 import { date } from '@/utils/date'
 import { getPostBySlug } from '@/utils/api'
 import './post.scss'
+import { IMAGES_URL } from '@/config/index'
 
 interface IPost {
   title?: string,
@@ -22,12 +23,14 @@ export default function Post() {
 
   const replaceHTML = (data) => {
     data = data.replace(/\<img/gi, "<img mode='widthFix' id='image' lazy-load")
+    data = data.replace(/\&emsp;/gi, "　　")
     return data
   }
   
   const fetchPost = async () => {
     const { slug } = getCurrentInstance().router.params
     const data = await getPostBySlug(slug)
+     
     const { more, title } = data
     data.more = replaceHTML(more)
     setPost(data)
@@ -36,7 +39,8 @@ export default function Post() {
 
   return (<View className='post'>
     <View className='head'>
-      <Image src={post.cover} lazyLoad className='cover' mode='aspectFill' />
+      
+      <Image src={IMAGES_URL + ( post && post.cover) } lazyLoad className='cover' mode='aspectFill' />
       <View className='mask'>
         <Text className='title'>{post.title}</Text>
         <View className='info'>
@@ -47,6 +51,7 @@ export default function Post() {
         </View>
       </View>
     </View>
+    { console.log(post.more) }
     {post.more && <View dangerouslySetInnerHTML={{ __html: post.more }} className='content'></View>}
   </View>)
 }

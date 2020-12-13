@@ -8,6 +8,11 @@ const getPosts = (current = 1) => {
   return get(`/posts/${current}.json`)
 }
 
+const getAllPosts = () => {
+  return get(`/posts.json`)
+}
+
+
 const getPostBySlug = (slug) => {
   return get(`/articles/${slug}.json`)
 }
@@ -31,6 +36,7 @@ const getAllGalleries = () => {
 export { 
   getConfig, 
   getPosts, 
+  getAllPosts,
   getPostBySlug, 
   getCategories, 
   getGalleries,

@@ -78,3 +78,9 @@ yarn build  // 打包
 ## 协议
 
 [MIT](https://github.com/izhaoo/hexo-theme-zhaoo/blob/master/LICENSE) License
+
+
+
+## 注意
+
+本仓库是我个性化之后的。

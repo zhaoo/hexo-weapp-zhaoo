@@ -8,14 +8,15 @@ import Divider from '@/components/divider'
 import './home.scss'
 
 export default function Index() {
-  const [posts, hasMore, isLoading] = usePagination()
+  const [posts, hasMore, isLoading ] = usePagination()
 
   return (
     <Block>
       {posts ? (
         <View className='home'>
           {posts.map((item: any) => {
-            return (<PostItem item={item} key={item.slug} />)
+           
+            return (<PostItem item={item} key={item && item.slug}  />)
           })}
           <Loading isLoading={isLoading} />
           {!hasMore && (<Divider text='我也是有底线的' />)}
