@@ -22,7 +22,7 @@ export default function usePagination() {
   const fetchData = async () => {
     const { data, pageCount } = await getPosts(pageSize[0])
     currData ? setData(currData.concat(data)) : setData(data)
-    if (data.length < pageCount) setHasMore(false)
+    if (!data || !pageCount || data.length < pageCount) setHasMore(false)
     setIsLoading(false)
     Taro.stopPullDownRefresh()
   }
