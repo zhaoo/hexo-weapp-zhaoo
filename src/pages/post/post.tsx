@@ -42,7 +42,7 @@ const Post = () => {
           <Text className='title'>{post.title}</Text>
           <View className='info'>
             <Text>
-              <Iconfont name='iconcalendar' />
+              <Iconfont name='iconjingyu' />
               {formateDate(post.date)}
             </Text>
           </View>

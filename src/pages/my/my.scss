@@ -1,0 +1,59 @@
+.my {
+  position: relative;
+
+  .user-wrapper {
+    .background-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: calc(100vw * 3 / 4);
+    }
+
+    .user {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100vw;
+      padding: 0 5vw;
+      height: calc(100vw * 3 / 4);
+      display: flex;
+      align-items: center;
+
+      .avatar {
+        display: block;
+        width: 120px;
+        height: 120px;
+        overflow: hidden;
+        border-radius: 50%;
+      }
+
+      .nickname {
+        margin-left: 40px;
+        font-size: 30px;
+        font-weight: bold;
+        color: #fff;
+      }
+    }
+  }
+
+  .tabnav {
+    position: absolute;
+    top: calc(100vw * 3 / 4 - 100px);
+    left: 5vw;
+    z-index: 1;
+    width: 90vw;
+    height: 200px;
+    display: flex;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, .15);
+
+    .tabnav-item {
+      height: 200px;
+      width: 30vw;
+    }
+  }
+
+}
