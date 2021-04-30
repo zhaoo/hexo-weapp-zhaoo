@@ -1,0 +1,34 @@
+.gallery-item {
+  display: inline-flex;
+  flex-direction: column;
+  width: 345px;
+  margin: 0 10px 20px 10px;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, .15);
+
+  .cover {
+    width: 345px;
+    height: 345px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+
+  .content {
+    padding: 15px;
+  }
+
+  .name {
+    @include substr(1);
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .count {
+    @include substr(1);
+    font-size: 24px;
+    text-align: justify;
+    text-justify: inter-ideograph;
+    color: #777;
+  }
+}

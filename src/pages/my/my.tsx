@@ -1,4 +1,5 @@
-import { View, Image, OpenData } from '@tarojs/components';
+import Taro from '@tarojs/taro';
+import { View, Image, OpenData, Text } from '@tarojs/components';
 import Iconfont from '@/components/iconfont';
 import './my.scss';
 
@@ -20,11 +21,25 @@ const My = () => {
         </View>
       </View>
       <View className='tabnav'>
-        {[0, 1, 2].map((item) => (
-          <View className='tabnav-item' key={item}>
-            <Iconfont type='image' name='jingyu' size={60} />
-          </View>
-        ))}
+        <View className='tabnav-item'>
+          <Iconfont type='image' name='like' size={30} />
+          <Text className='text'>喜欢</Text>
+        </View>
+        <view className='divide' />
+        <View className='tabnav-item'>
+          <Iconfont type='image' name='message' size={30} />
+          <Text className='text'>消息</Text>
+        </View>
+        <view className='divide' />
+        <View className='tabnav-item'>
+          <Iconfont type='image' name='clock' size={30} />
+          <Text className='text'>历史</Text>
+        </View>
+        <view className='divide' />
+        <View className='tabnav-item'>
+          <Iconfont type='image' name='share' size={30} />
+          <Text className='text'>分享</Text>
+        </View>
       </View>
     </View>
   );

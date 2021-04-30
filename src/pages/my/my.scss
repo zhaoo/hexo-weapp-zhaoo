@@ -31,7 +31,7 @@
 
       .nickname {
         margin-left: 40px;
-        font-size: 30px;
+        font-size: 36px;
         font-weight: bold;
         color: #fff;
       }
@@ -40,19 +40,36 @@
 
   .tabnav {
     position: absolute;
-    top: calc(100vw * 3 / 4 - 100px);
+    top: calc(100vw * 3 / 4 - 90px);
     left: 5vw;
     z-index: 1;
     width: 90vw;
-    height: 200px;
+    height: 22.5vw;
     display: flex;
+    align-items: center;
     border-radius: 15px;
     background-color: #fff;
     box-shadow: 0 2px 20px rgba(0, 0, 0, .15);
 
+    .divide {
+      width: 2px;
+      height: 30px;
+      background-color: #ccc;
+    }
+
     .tabnav-item {
-      height: 200px;
-      width: 30vw;
+      height: 22.5vw;
+      width: 22.5vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .text {
+        margin-top: 10px;
+        font-size: 24px;
+        color: #333;
+      }
     }
   }
 

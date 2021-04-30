@@ -4,6 +4,7 @@ export default {
     'pages/post/post',
     'pages/my/my',
     'pages/galleries/galleries',
+    'pages/gallery/gallery',
   ],
   window: {
     backgroundTextStyle: 'light',

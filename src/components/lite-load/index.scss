@@ -1,4 +1,4 @@
-.lite-loading {
+.lite-load {
   width: 750px;
   height: 60px;
   display: flex;
@@ -6,6 +6,7 @@
   align-items: center;
 
   .text {
+    margin-left: 10px;
     font-size: 24px;
     color: #999;
   }

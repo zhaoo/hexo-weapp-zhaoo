@@ -1,0 +1,35 @@
+.gallery {
+  background-color: #fff;
+  min-height: 100vh;
+  padding: 10px;
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 100px 0;
+
+    .name {
+      @include substr(1);
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      @include substr(2);
+      color: #555;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+
+    .photo {
+      width: 100%;
+      height: calc((100vw - 30px) / 2);
+    }
+  }
+}
