@@ -17,14 +17,16 @@ const HistoryItem: FC<IHistoryItemProps> = ({ data }) => {
         Taro.navigateTo({ url: `/pages/post/post?slug=${data.slug}` });
       }}
     >
-      <Image src={data.cover} lazyLoad className='cover' />
+      {data.cover ? (
+        <Image src={data.cover} lazyLoad className='cover' mode='aspectFill' />
+      ) : null}
       <View className='content'>
-        <Text className='title'>{data.title}</Text>
+        <Text className='title'>{data.title || ''}</Text>
         <View className='excerpt'>
-          <Text>{data.excerpt}</Text>
+          <Text>{data.excerpt || ''}</Text>
         </View>
         <View className='info'>
-          <Text>{formateDate(data.date)}</Text>
+          <Text>{formateDate(data.date) || ''}</Text>
         </View>
       </View>
     </View>

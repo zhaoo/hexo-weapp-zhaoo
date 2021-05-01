@@ -1,5 +1,5 @@
 .gallery {
-  background-color: #fff;
+  background-color: $color-background;
   min-height: 100vh;
   padding: 10px;
 
@@ -18,7 +18,7 @@
 
     .description {
       @include substr(2);
-      color: #555;
+      color: $color-middle;
     }
   }
 

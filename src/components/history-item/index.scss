@@ -1,41 +1,48 @@
 .history-item {
-  background-color: #fff;
-  width: 100vw;
-  margin-bottom: 30px;
-  display: flex;
-  height: calc(100vw * 0.3);
   position: relative;
+  margin-bottom: 30px;
+  width: 750px;
+  height: 225px;
+  display: flex;
+  background-color: $color-background;
 
   .cover {
-    width: 40%;
-    height: 100%;
+    width: 300px;
+    height: 225px;
   }
 
   .content {
-    width: 60%;
     padding: 20px;
+    width: 450px;
+    height: 225px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     .title {
-      font-size: 1rem;
+      @include substr(1);
       margin-bottom: 10px;
+      font-size: 28px;
+      font-weight: bold;
+      color: $color-default;
     }
 
     .excerpt {
-      height: 100%;
-
       text {
         @include substr(2);
-        font-size: 0.8rem;
-        color: #333;
+        height: 72px;
+        font-size: 24px;
+        text-align: justify;
+        text-justify: inter-ideograph;
+        color: $color-middle;
       }
     }
 
     .info {
+      @include substr(1);
       font-size: 0.8rem;
-      color: #555;
+      height: 1.6rem;
+      color: $color-light;
     }
   }
 }
