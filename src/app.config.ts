@@ -5,6 +5,7 @@ export default {
     'pages/my/my',
     'pages/galleries/galleries',
     'pages/gallery/gallery',
+    'pages/history/history',
   ],
   window: {
     backgroundTextStyle: 'light',

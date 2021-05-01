@@ -21,6 +21,14 @@ const My = () => {
         </View>
       </View>
       <View className='tabnav'>
+        <View
+          className='tabnav-item'
+          onClick={() => Taro.navigateTo({ url: `/pages/history/history` })}
+        >
+          <Iconfont type='image' name='clock' size={30} />
+          <Text className='text'>历史</Text>
+        </View>
+        <view className='divide' />
         <View className='tabnav-item'>
           <Iconfont type='image' name='like' size={30} />
           <Text className='text'>喜欢</Text>
@@ -29,11 +37,6 @@ const My = () => {
         <View className='tabnav-item'>
           <Iconfont type='image' name='message' size={30} />
           <Text className='text'>消息</Text>
-        </View>
-        <view className='divide' />
-        <View className='tabnav-item'>
-          <Iconfont type='image' name='clock' size={30} />
-          <Text className='text'>历史</Text>
         </View>
         <view className='divide' />
         <View className='tabnav-item'>

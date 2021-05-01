@@ -1,0 +1,41 @@
+.history-item {
+  background-color: #fff;
+  width: 100vw;
+  margin-bottom: 30px;
+  display: flex;
+  height: calc(100vw * 0.3);
+  position: relative;
+
+  .cover {
+    width: 40%;
+    height: 100%;
+  }
+
+  .content {
+    width: 60%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .title {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .excerpt {
+      height: 100%;
+
+      text {
+        @include substr(2);
+        font-size: 0.8rem;
+        color: #333;
+      }
+    }
+
+    .info {
+      font-size: 0.8rem;
+      color: #555;
+    }
+  }
+}

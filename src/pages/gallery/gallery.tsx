@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Taro, { getCurrentInstance } from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';
-import LiteLoading from '@/components/lite-load';
 import { getGalleryByName } from '@/apis/api';
 import { IGalleryItem } from '@/types/gallery';
 import './gallery.scss';

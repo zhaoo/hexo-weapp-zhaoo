@@ -4,6 +4,7 @@ import { View, Image, Text } from '@tarojs/components';
 import Iconfont from '@/components/iconfont';
 import { formateDate } from '@/utils/index';
 import { getPostBySlug } from '@/apis/api';
+import { getStorageSync, setStorageSync } from '@/utils/storage';
 import './post.scss';
 
 interface IPost {
@@ -11,6 +12,7 @@ interface IPost {
   more?: string;
   cover?: string;
   date: string;
+  excerpt: string;
 }
 
 const replaceHTML = (data) => {
@@ -29,9 +31,22 @@ const Post = () => {
     const { slug } = getCurrentInstance().router.params;
     const data = await getPostBySlug(slug);
     const { more, title } = data;
+    Taro.setNavigationBarTitle({ title });
     data.more = replaceHTML(more);
     setPost(data);
-    Taro.setNavigationBarTitle({ title });
+    setHistoryStorage(data);
+  };
+
+  const setHistoryStorage = (data) => {
+    const key = 'history';
+    const arr = getStorageSync(key) || [];
+    arr.forEach((item, index) => {
+      if (data.slug === item.slug) {
+        arr.splice(index, 1);
+      }
+    });
+    arr.push(data);
+    setStorageSync(arr, key);
   };
 
   return (
