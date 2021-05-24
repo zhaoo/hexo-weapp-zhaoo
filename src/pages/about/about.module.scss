@@ -1,0 +1,26 @@
+.about {
+  width: 750px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $color-background-deep;
+
+  .logo {
+    width: 200px;
+    height: 200px;
+    margin-top: 100px;
+  }
+
+  .title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 30px;
+    color: $color-default;
+  }
+
+  .listWrapper {
+    width: 750px;
+    margin-top: 100px;
+  }
+}

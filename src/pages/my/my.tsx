@@ -2,6 +2,7 @@ import Taro from '@tarojs/taro';
 import { View, Image, OpenData, Text } from '@tarojs/components';
 import Icon from '@/components/icon';
 import List from '@/components/list';
+import ColorSwitch from '@/components/color-switch';
 import './my.scss';
 
 const My = () => {
@@ -36,8 +37,8 @@ const My = () => {
         </View>
         <view className='divide' />
         <View className='tabnav-item'>
-          <Icon type='image' name='message' size={30} />
-          <Text className='text'>消息</Text>
+          <Icon type='image' name='reward' size={30} />
+          <Text className='text'>打赏</Text>
         </View>
         <view className='divide' />
         <View className='tabnav-item'>
@@ -46,9 +47,20 @@ const My = () => {
         </View>
       </View>
       <View className='list-wrapper'>
-        <List title='夜间模式' icon='moon' />
+        <List title='夜间模式' icon='moon' rightChildren={<ColorSwitch />} />
+        <List
+          title='网页博客'
+          icon='cloud'
+          arrow
+          onClick={() => Taro.navigateTo({ url: `/pages/webview/webview` })}
+        />
         <List title='实验功能' icon='experiment' arrow />
-        <List title='关于应用' icon='info-circle' arrow />
+        <List
+          title='关于应用'
+          icon='info-circle'
+          arrow
+          onClick={() => Taro.navigateTo({ url: `/pages/about/about` })}
+        />
       </View>
     </View>
   );

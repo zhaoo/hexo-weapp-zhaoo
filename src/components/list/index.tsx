@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { View, Text } from '@tarojs/components';
 import Icon from '@/components/icon';
 import './index.scss';
@@ -8,9 +8,16 @@ interface ListProps {
   icon?: string;
   arrow?: boolean;
   onClick?: () => void;
+  rightChildren?: ReactNode;
 }
 
-const List: FC<ListProps> = ({ title, icon, arrow, onClick }) => {
+const List: FC<ListProps> = ({
+  title,
+  icon,
+  arrow,
+  onClick,
+  rightChildren,
+}) => {
   return (
     <View className='list' onClick={onClick}>
       <View className='left'>
@@ -21,6 +28,7 @@ const List: FC<ListProps> = ({ title, icon, arrow, onClick }) => {
       </View>
       <View className='right'>
         {arrow ? <Icon type='image' name='right' size={16} /> : null}
+        {rightChildren ? rightChildren : null}
       </View>
     </View>
   );

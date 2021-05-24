@@ -6,6 +6,8 @@ export default {
     'pages/galleries/galleries',
     'pages/gallery/gallery',
     'pages/history/history',
+    'pages/webview/webview',
+    'pages/about/about',
   ],
   window: {
     backgroundTextStyle: 'light',
