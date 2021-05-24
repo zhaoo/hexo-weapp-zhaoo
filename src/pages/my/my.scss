@@ -1,5 +1,7 @@
 .my {
   position: relative;
+  height: 100vh;
+  background-color: $color-background-deep;
 
   .user-wrapper {
     .background-image {
@@ -71,6 +73,13 @@
         color: $color-default;
       }
     }
+  }
+
+  .list-wrapper {
+    position: absolute;
+    top: calc(100vw * 3 / 4);
+    left: 0;
+    margin-top: 200px;
   }
 
 }

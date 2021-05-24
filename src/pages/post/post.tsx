@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Taro, { getCurrentInstance } from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';
-import Iconfont from '@/components/iconfont';
+import Icon from '@/components/icon';
 import { formateDate } from '@/utils/index';
 import { getPostBySlug } from '@/apis/api';
 import { getStorageSync, setStorageSync } from '@/utils/storage';
@@ -57,7 +57,7 @@ const Post = () => {
           <Text className='title'>{post.title}</Text>
           <View className='info'>
             <Text>
-              <Iconfont name='iconjingyu' />
+              <Icon name='iconjingyu' />
               {formateDate(post.date)}
             </Text>
           </View>

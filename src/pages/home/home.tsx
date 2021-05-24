@@ -14,7 +14,7 @@ const Home = () => {
           ))
         : null}
       {isLoading ? <LiteLoading text='正在加载...' icon='jingyu' /> : null}
-      {!hasMore ? <LiteLoading text='暂无更多内容' /> : null}
+      {!hasMore ? <LiteLoading text='本来无一物，何处惹尘埃 ~' /> : null}
     </View>
   );
 };

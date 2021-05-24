@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { View, Text } from '@tarojs/components';
-import Iconfont from '@/components/iconfont';
+import Icon from '@/components/icon';
 import './index.scss';
 
 interface ILiteLoad {
@@ -11,7 +11,7 @@ interface ILiteLoad {
 const LiteLoading: FC<ILiteLoad> = ({ text, icon }) => {
   return (
     <View className='lite-load'>
-      {icon ? <Iconfont type='image' name={icon} size={18} /> : null}
+      {icon ? <Icon type='image' name={icon} size={18} /> : null}
       <Text className='text'>{text || '加载中...'}</Text>
     </View>
   );

@@ -1,0 +1,22 @@
+.list {
+  padding: 20px 5vw;
+  margin-bottom: 20px;
+  width: 750px;
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-background;
+
+  .left,
+  .right {
+    display: flex;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 28px;
+    color: $color-default;
+  }
+}

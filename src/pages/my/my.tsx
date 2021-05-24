@@ -1,6 +1,7 @@
 import Taro from '@tarojs/taro';
 import { View, Image, OpenData, Text } from '@tarojs/components';
-import Iconfont from '@/components/iconfont';
+import Icon from '@/components/icon';
+import List from '@/components/list';
 import './my.scss';
 
 const My = () => {
@@ -25,24 +26,29 @@ const My = () => {
           className='tabnav-item'
           onClick={() => Taro.navigateTo({ url: `/pages/history/history` })}
         >
-          <Iconfont type='image' name='clock' size={30} />
+          <Icon type='image' name='clock' size={30} />
           <Text className='text'>历史</Text>
         </View>
         <view className='divide' />
         <View className='tabnav-item'>
-          <Iconfont type='image' name='like' size={30} />
+          <Icon type='image' name='like' size={30} />
           <Text className='text'>喜欢</Text>
         </View>
         <view className='divide' />
         <View className='tabnav-item'>
-          <Iconfont type='image' name='message' size={30} />
+          <Icon type='image' name='message' size={30} />
           <Text className='text'>消息</Text>
         </View>
         <view className='divide' />
         <View className='tabnav-item'>
-          <Iconfont type='image' name='share' size={30} />
+          <Icon type='image' name='share' size={30} />
           <Text className='text'>分享</Text>
         </View>
+      </View>
+      <View className='list-wrapper'>
+        <List title='夜间模式' icon='moon' />
+        <List title='实验功能' icon='experiment' arrow />
+        <List title='关于应用' icon='info-circle' arrow />
       </View>
     </View>
   );
