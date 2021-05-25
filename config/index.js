@@ -8,7 +8,6 @@ const config = {
     '@/components': path.resolve(__dirname, '..', 'src/components'),
     '@/hooks': path.resolve(__dirname, '..', 'src/hooks'),
     '@/constants': path.resolve(__dirname, '..', 'src/constants'),
-    '@/config': path.resolve(__dirname, '..', 'src/config'),
     '@/assets': path.resolve(__dirname, '..', 'src/assets'),
     '@/styles': path.resolve(__dirname, '..', 'src/styles'),
     '@/apis': path.resolve(__dirname, '..', 'src/apis'),

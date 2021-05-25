@@ -1,6 +1,6 @@
 import { FC, CSSProperties } from 'react';
 import { Text, View, Image } from '@tarojs/components';
-import './index.scss';
+import styles from './index.module.scss';
 
 interface IIconProps {
   name: string;
@@ -17,17 +17,18 @@ const Icon: FC<IIconProps> = ({ name, type = 'font', size, style }) => {
 
   return (
     <View
+      className={styles.icon}
       style={{
         ...style,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
         width: size,
         height: size,
       }}
     >
       {type === 'font' ? (
-        <Text className={`iconfont ${name}`} style={{ fontSize: size }}></Text>
+        <Text
+          className={`${styles.iconfont} ${styles.name}`}
+          style={{ fontSize: size }}
+        ></Text>
       ) : (
         <Image src={imageSrc} style={{ width: size, height: size }} />
       )}

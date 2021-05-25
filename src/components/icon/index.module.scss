@@ -12,6 +12,12 @@
   /* iOS 4.1- */
 }
 
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .iconfont {
   font-family: 'iconfont' !important;
   font-style: normal;

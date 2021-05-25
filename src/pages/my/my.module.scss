@@ -3,8 +3,8 @@
   height: 100vh;
   background-color: $color-background-deep;
 
-  .user-wrapper {
-    .background-image {
+  .userWrapper {
+    .backgroundImage {
       position: absolute;
       top: 0;
       left: 0;
@@ -59,7 +59,7 @@
       background-color: #ccc;
     }
 
-    .tabnav-item {
+    .tabnavItem {
       height: 22.5vw;
       width: 22.5vw;
       display: flex;
@@ -75,11 +75,21 @@
     }
   }
 
-  .list-wrapper {
+  .listWrapper {
     position: absolute;
     top: calc(100vw * 3 / 4);
     left: 0;
     margin-top: 22.5vw;
   }
 
+}
+
+.donate {
+  width: 500px;
+  height: 600px;
+
+  .image {
+    width: 500px;
+    height: 500px;
+  }
 }

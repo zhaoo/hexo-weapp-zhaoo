@@ -1,29 +1,29 @@
-import Taro from "@tarojs/taro";
-import { BASE_URL } from "@/config/index";
-import { HTTP_STATUS } from "@/constants/index";
+import Taro from '@tarojs/taro';
+import { HTTP_STATUS } from '@/constants/index';
+import { baseUrl } from '../../project.config.json';
 
 type Method =
-  | "OPTIONS"
-  | "GET"
-  | "HEAD"
-  | "POST"
-  | "PUT"
-  | "DELETE"
-  | "TRACE"
-  | "CONNECT";
+  | 'OPTIONS'
+  | 'GET'
+  | 'HEAD'
+  | 'POST'
+  | 'PUT'
+  | 'DELETE'
+  | 'TRACE'
+  | 'CONNECT';
 
 export const request = async (
   url: string,
   data?: any,
-  method: Method = "GET",
+  method: Method = 'GET',
   headers = {}
 ) => {
   const option = {
-    url: BASE_URL + url,
+    url: baseUrl + url,
     data,
     method,
     header: {
-      "content-type": "application/json;charset=utf-8",
+      'content-type': 'application/json;charset=utf-8',
       ...headers,
     },
   };
@@ -41,9 +41,9 @@ export const request = async (
 };
 
 export const get = (url, data = {}, headers = {}) => {
-  return request(url, data, "GET", headers);
+  return request(url, data, 'GET', headers);
 };
 
 export const post = (url, data = {}, headers = {}) => {
-  return request(url, data, "POST", headers);
+  return request(url, data, 'POST', headers);
 };
