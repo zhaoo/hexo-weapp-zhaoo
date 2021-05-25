@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { View, Text } from '@tarojs/components';
 import Icon from '@/components/icon';
-import './index.scss';
+import styles from './index.module.scss';
 
 interface ListProps {
   title: string;
@@ -9,6 +9,7 @@ interface ListProps {
   arrow?: boolean;
   onClick?: () => void;
   rightChildren?: ReactNode;
+  extraText?: string;
 }
 
 const List: FC<ListProps> = ({
@@ -17,18 +18,24 @@ const List: FC<ListProps> = ({
   arrow,
   onClick,
   rightChildren,
+  extraText,
 }) => {
   return (
-    <View className='list' onClick={onClick}>
-      <View className='left'>
+    <View className={styles.list} onClick={onClick}>
+      <View className={styles.left}>
         {icon ? (
           <Icon type='image' name={icon} size={20} style={{ marginRight: 5 }} />
         ) : null}
-        <Text className='title'>{title}</Text>
+        <Text className={styles.title}>{title}</Text>
       </View>
-      <View className='right'>
-        {arrow ? <Icon type='image' name='right' size={16} /> : null}
+      <View className={styles.right}>
         {rightChildren ? rightChildren : null}
+        {extraText ? (
+          <Text className={styles.extraText}>{extraText}</Text>
+        ) : null}
+        {arrow ? (
+          <Icon type='image' name='right' size={16} style={{ marginLeft: 5 }} />
+        ) : null}
       </View>
     </View>
   );

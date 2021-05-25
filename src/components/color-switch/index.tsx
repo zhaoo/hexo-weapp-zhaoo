@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 import { View } from '@tarojs/components';
-import './index.scss';
+import styles from './index.module.scss';
 
 interface ColorSwitchProps {
   checked?: boolean;
@@ -17,10 +17,10 @@ const ColorSwitch: FC<ColorSwitchProps> = ({ checked = false, onChange }) => {
 
   return (
     <View
-      className={`color-switch ${state ? 'night' : 'day'}`}
+      className={`${styles.colorSwitch} ${state ? styles.night : styles.day}`}
       onClick={() => setState(!state)}
     >
-      <View className='knob' />
+      <View className={styles.knob} />
     </View>
   );
 };

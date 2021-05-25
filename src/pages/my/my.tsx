@@ -3,6 +3,7 @@ import { View, Image, OpenData, Text } from '@tarojs/components';
 import Icon from '@/components/icon';
 import List from '@/components/list';
 import ColorSwitch from '@/components/color-switch';
+import { WEB_URL } from '@/config/index';
 import './my.scss';
 
 const My = () => {
@@ -52,7 +53,11 @@ const My = () => {
           title='网页博客'
           icon='cloud'
           arrow
-          onClick={() => Taro.navigateTo({ url: `/pages/webview/webview` })}
+          onClick={() =>
+            Taro.navigateTo({
+              url: `/pages/webview/webview?url=${WEB_URL}`,
+            })
+          }
         />
         <List title='实验功能' icon='experiment' arrow />
         <List

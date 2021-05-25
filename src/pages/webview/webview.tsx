@@ -1,8 +1,9 @@
+import { getCurrentInstance } from '@tarojs/taro';
 import { WebView } from '@tarojs/components';
-import { WEB_URL } from '@/config/index';
 
 const Webview = () => {
-  return <WebView src={WEB_URL} />;
+  const { url } = getCurrentInstance().router.params;
+  return <WebView src={url} />;
 };
 
 export default Webview;

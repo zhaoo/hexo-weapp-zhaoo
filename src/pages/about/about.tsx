@@ -1,3 +1,4 @@
+import Taro from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';
 import List from '@/components/list';
 import logo from '@/assets/images/logo.png';
@@ -10,22 +11,26 @@ const About = () => {
       <Text className={styles.title}>hexo-weapp-zhaoo</Text>
       <View className={styles.listWrapper}>
         <List
-          title='网页博客'
-          icon='cloud'
+          title='GitHub'
+          icon='github'
           arrow
-          onClick={() => Taro.navigateTo({ url: `/pages/webview/webview` })}
+          extraText='hexo-weapp-zhaoo'
+          onClick={() =>
+            Taro.navigateTo({
+              url: `/pages/webview/webview?url=https://github.com/zhaoo/hexo-weapp-zhaoo`,
+            })
+          }
         />
         <List
-          title='网页博客'
-          icon='cloud'
+          title='QQ群'
+          icon='QQ'
           arrow
-          onClick={() => Taro.navigateTo({ url: `/pages/webview/webview` })}
-        />
-        <List
-          title='网页博客'
-          icon='cloud'
-          arrow
-          onClick={() => Taro.navigateTo({ url: `/pages/webview/webview` })}
+          extraText='550262893'
+          onClick={() =>
+            Taro.navigateTo({
+              url: `/pages/webview/webview?url=https://qm.qq.com/cgi-bin/qm/qr?k=L0VjfLZ0MAzSuCjmrSf5H37FiVCndnA2&jump_from=webapi`,
+            })
+          }
         />
       </View>
     </View>
