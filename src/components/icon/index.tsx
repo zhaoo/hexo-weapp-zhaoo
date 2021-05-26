@@ -26,7 +26,7 @@ const Icon: FC<IIconProps> = ({ name, type = 'font', size, style }) => {
     >
       {type === 'font' ? (
         <Text
-          className={`${styles.iconfont} ${styles.name}`}
+          className={`${styles.iconfont} ${styles[name]}`}
           style={{ fontSize: size }}
         ></Text>
       ) : (

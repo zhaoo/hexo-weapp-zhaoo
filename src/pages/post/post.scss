@@ -14,11 +14,9 @@
       position: absolute;
       bottom: 0;
       width: 100%;
-      background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, 0.75)
-      );
+      background: linear-gradient(180deg,
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0.75));
       padding: 30px;
       color: $color-white;
 
@@ -28,10 +26,8 @@
       }
 
       .info {
+        display: flex;
         font-size: 0.8rem;
-        .iconfont {
-          margin-right: 5px;
-        }
       }
     }
   }

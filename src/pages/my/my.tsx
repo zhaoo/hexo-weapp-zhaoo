@@ -104,7 +104,12 @@ const My = () => {
               })
             }
           />
-          <List title='实验功能' icon='experiment' arrow />
+          <List
+            title='实验功能'
+            icon='experiment'
+            arrow
+            onClick={() => Taro.navigateTo({ url: `/pages/laboratory/laboratory` })}
+          />
           <List
             title='关于应用'
             icon='info-circle'

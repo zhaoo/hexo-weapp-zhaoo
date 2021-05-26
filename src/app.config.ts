@@ -8,6 +8,7 @@ export default {
     'pages/history/history',
     'pages/webview/webview',
     'pages/about/about',
+    'pages/laboratory/laboratory',
   ],
   window: {
     backgroundTextStyle: 'light',
