@@ -1,0 +1,17 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 750px;
+  height: 100vh;
+  z-index: 2021;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .75);
+  opacity: 0;
+
+  .content {
+    z-index: 2022;
+  }
+}

@@ -7,8 +7,8 @@
 <h3 align="center">为 Hexo 定制的博客小程序</h3>  
 
 <div align="center">
-  <a href="https://github.com/izhaoo/hexo-theme-zhaoo/releases" target="_blank" rel="noopener noreferrer">
-    <img alt="releases" src="https://img.shields.io/badge/releases-v1.0.0-blue.svg?style=flat-square&longCache=true">
+  <a href="https://github.com/zhaoo/hexo-weapp-zhaoo/releases" target="_blank" rel="noopener noreferrer">
+    <img alt="releases" src="https://img.shields.io/badge/releases-v2.0.0-blue.svg?style=flat-square&longCache=true">
   </a>
   <a href="https://taro.aotu.io/" target="_blank" rel="noopener noreferrer">
     <img alt="taro" src="https://img.shields.io/badge/react-%3E=3.0.9-blue.svg?style=flat-square&logo=react&longCache=true">
@@ -54,7 +54,7 @@
 
 需要配合 [hexo-generator-restful](https://github.com/izhaoo/hexo-generator-restful) 插件使用，参考插件文档部署并生成 `RESTful` 接口。
 
-修改 `/config/index.ts` 文件内的 `BASE_URL` (RESTful API) 地址字段。
+修改 `/client/config.json` 文件内的 `baseUrl` (RESTful API) 地址字段。
 
 ### Build
 

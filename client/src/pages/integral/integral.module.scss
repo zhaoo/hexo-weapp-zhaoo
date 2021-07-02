@@ -1,0 +1,111 @@
+.integral {
+  width: 750px;
+  height: 100vh;
+  background-color: $color-background-deep;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// .integral {
+//   width: 750px;
+//   min-height: 100vh;
+//   background-color: $color-background;
+//   padding: 20px;
+
+//   .tokenCard {
+//     margin-top: 20px;
+//     margin-left: -10px;
+//     width: 730px;
+
+//     .tokenItem {
+//       display: inline-flex;
+//       flex-direction: column;
+//       justify-content: center;
+//       width: 345px;
+//       height: 200px;
+//       margin: 0 10px 20px 10px;
+//       padding: 30px;
+//       border-radius: 10px;
+//       background-color: #ff4d4f;
+
+//       .name,
+//       .balance {
+//         color: $color-white;
+//       }
+
+//       .title {
+//         font-size: 28px;
+//       }
+
+//       .balance {
+//         font-size: 40px;
+//         font-weight: bold;
+//       }
+//     }
+//   }
+
+//   .mainCard {
+//     width: 710px;
+//     height: 270px;
+//     border-radius: 16px;
+//     display: flex;
+//     flex-direction: column;
+//     background-color: #1890ff;
+//     box-shadow: $box-shadow;
+
+//     .assetsWrapper {
+//       height: 180px;
+//       width: 710px;
+//       padding: 20px 30px;
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: center;
+
+//       .title,
+//       .count {
+//         color: $color-white;
+//       }
+
+//       .title {
+//         font-size: 28px;
+//       }
+
+//       .count {
+//         font-size: 50px;
+//         font-weight: bold;
+//       }
+//     }
+
+//     .actionWraper {
+//       height: 90px;
+//       width: 710px;
+//       border-bottom-left-radius: 16px;
+//       border-bottom-right-radius: 16px;
+//       display: flex;
+//       flex-direction: row-reverse;
+//       align-items: center;
+//       background-color: #40a9ff;
+
+//       .divider {
+//         height: 30px;
+//         width: 2px;
+//         background-color: $color-white;
+//       }
+
+//       .actionItem {
+//         width: calc(710px / 3);
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         color: $color-white;
+
+//         .name {
+//           margin-left: 10px;
+//           font-size: 28px;
+//           line-height: 28px;
+//         }
+//       }
+//     }
+//   }
+// }

@@ -1,0 +1,32 @@
+/* Color */
+
+/* global */
+$color-link: #ff3b00 !default;
+$color-white: #fff !default;
+$color-black: #000 !default;
+/* light */
+$color-default: #33333d !default;
+$color-middle: #555 !default;
+$color-light: #999 !default;
+$color-background: #fff !default;
+$color-background-deep: #f5f7f9 !default;
+/* dark */
+$color-default-dark: #ddd !default;
+$color-middle-dark: #9899ab !default;
+$color-light-dark: #7d8594 !default;
+$color-background-dark: #1e2128 !default;
+$color-background-deep-dark: #1a1d22 !default;
+
+/* Common */
+
+$transition: all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9) !default;
+$box-shadow: 0 2px 20px rgba(0, 0, 0, .15);
+
+/* Mixin */
+
+@mixin substr($num) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $num;
+  overflow: hidden;
+}

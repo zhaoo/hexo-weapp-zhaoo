@@ -1,0 +1,48 @@
+.history-item {
+  position: relative;
+  margin-bottom: 30px;
+  width: 750px;
+  height: 225px;
+  display: flex;
+  background-color: $color-background;
+
+  .cover {
+    width: 300px;
+    height: 225px;
+  }
+
+  .content {
+    padding: 20px;
+    width: 450px;
+    height: 225px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .title {
+      @include substr(1);
+      margin-bottom: 10px;
+      font-size: 28px;
+      font-weight: bold;
+      color: $color-default;
+    }
+
+    .excerpt {
+      text {
+        @include substr(2);
+        height: 72px;
+        font-size: 24px;
+        text-align: justify;
+        text-justify: inter-ideograph;
+        color: $color-middle;
+      }
+    }
+
+    .info {
+      @include substr(1);
+      font-size: 0.8rem;
+      height: 1.6rem;
+      color: $color-light;
+    }
+  }
+}

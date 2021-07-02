@@ -1,8 +1,7 @@
 {
-  "extends": [
-    "taro/react"
-  ],
+  "extends": ["taro/react"],
   "rules": {
-    "react-hooks/exhaustive-deps": 0
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
   }
 }

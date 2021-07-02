@@ -1,0 +1,8 @@
+{
+  "baseUrl": "https://www.izhaoo.com/api",
+  "webUrl": "https://www.izhaoo.com",
+  "donate": {
+    "wechat": "https://pic.izhaoo.com/wechat.jpg",
+    "alipay": "https://pic.izhaoo.com/alipay.jpg"
+  }
+}

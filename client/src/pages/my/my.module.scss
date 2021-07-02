@@ -1,0 +1,96 @@
+.my {
+  position: relative;
+  width: 750px;
+  height: 100vh;
+  background-color: $color-background-deep;
+
+  .userWrapper {
+    .backgroundImage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: calc(100vw * 3 / 4);
+    }
+
+    .user {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100vw;
+      padding: 0 5vw;
+      height: calc(100vw * 3 / 4);
+      display: flex;
+      align-items: center;
+
+      .avatar {
+        display: block;
+        width: 120px;
+        height: 120px;
+        overflow: hidden;
+        border-radius: 50%;
+      }
+
+      .nickname {
+        margin-left: 40px;
+        font-size: 36px;
+        font-weight: bold;
+        color: $color-background;
+      }
+    }
+  }
+
+  .tabnav {
+    position: absolute;
+    top: calc(100vw * 3 / 4 - 90px);
+    left: 5vw;
+    z-index: 1;
+    width: 90vw;
+    height: 22.5vw;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    background-color: $color-background;
+    box-shadow: $box-shadow;
+
+    .divide {
+      width: 2px;
+      height: 30px;
+      background-color: #ccc;
+    }
+
+    .tabnavItem {
+      height: 22.5vw;
+      width: 22.5vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .text {
+        margin-top: 10px;
+        font-size: 24px;
+        color: $color-default;
+      }
+    }
+  }
+
+  .listWrapper {
+    position: absolute;
+    top: calc(100vw * 3 / 4);
+    left: 0;
+    margin-top: 22.5vw;
+  }
+
+}
+
+.donate {
+  width: 500px;
+  height: 600px;
+
+  .image {
+    width: 500px;
+    height: 500px;
+  }
+}
