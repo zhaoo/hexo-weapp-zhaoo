@@ -1,9 +1,0 @@
-{
-  "miniprogramRoot": "./",
-  "projectname": "hexo-weapp-zhaoo",
-  "appid": "wx1a5d0894484245b8",
-  "setting": {
-    "es6": false,
-    "minified": false
-  }
-}
