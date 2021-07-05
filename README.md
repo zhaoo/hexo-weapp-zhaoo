@@ -50,32 +50,29 @@
 
 ## 部署
 
+[小程序部署文档](https://www.izhaoo.com/2021/07/05/hexo-weapp-zhaoo-doc/)
+
 ### RESTful
 
-需要配合 [hexo-generator-restful](https://github.com/izhaoo/hexo-generator-restful) 插件使用，参考插件文档部署并生成 `RESTful` 接口。
-
-修改 `/client/config.json` 文件内的 `baseUrl` (RESTful API) 地址字段。
+需要配合 [hexo-generator-restful-zhaoo](https://github.com/zhaoo/hexo-generator-restful-zhaoo) 插件使用，参考插件文档部署并生成 `RESTful` 接口。
 
 ### Build
 
-注册微信小程序，修改 `/project.config.json` 文件中的 `appid` 等字段，匹配小程序配置。
+注册微信小程序，修改 `/project.config.json` 文件中的 `appid` 字段，匹配小程序配置。
+
+修改 `/client/config.json` 文件中的配置。
 
 ```bash
-npm install -g @tarojs/cli yarn  // 安装 Taro 和 yarn
-
-yarn  // 安装依赖
-
-// 修改 config.ts 中的配置
-
-yarn build:weapp  // 打包
+$ npm install -g @tarojs/cli@3.2.1  // 安装 Taro
+$ npm run build:weapp  // 打包
 ```
 
-使用微信开发者工具打开 `dist` 目录，上传代码完成发布。
+使用微信开发者工具打开 `hexo-weapp-zhaoo` 目录，上传代码完成发布。
 
 ## 相关
 
 * 主题：[hexo-theme-zhaoo](https://github.com/izhaoo/hexo-theme-zhaoo) (一款简约的 Hexo 主题)
-* 插件：[hexo-generator-restful](https://github.com/izhaoo/hexo-generator-restful) (Hexo RESTful 接口)
+* 插件：[hexo-generator-restful-zhaoo](https://github.com/zhaoo/hexo-generator-restful-zhaoo) (Hexo RESTful 接口)
 
 ## 协议
 
