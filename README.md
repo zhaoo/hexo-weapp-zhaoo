@@ -54,7 +54,7 @@
 
 ### RESTful
 
-需要配合 [hexo-generator-restful](https://github.com/izhaoo/hexo-generator-restful) 插件使用，参考插件文档部署并生成 `RESTful` 接口。
+需要配合 [hexo-generator-restful-zhaoo](https://github.com/zhaoo/hexo-generator-restful-zhaoo) 插件使用，参考插件文档部署并生成 `RESTful` 接口。
 
 ### Build
 
@@ -72,7 +72,7 @@ $ npm run build:weapp  // 打包
 ## 相关
 
 * 主题：[hexo-theme-zhaoo](https://github.com/izhaoo/hexo-theme-zhaoo) (一款简约的 Hexo 主题)
-* 插件：[hexo-generator-restful](https://github.com/izhaoo/hexo-generator-restful) (Hexo RESTful 接口)
+* 插件：[hexo-generator-restful-zhaoo](https://github.com/zhaoo/hexo-generator-restful-zhaoo) (Hexo RESTful 接口)
 
 ## 协议
 
