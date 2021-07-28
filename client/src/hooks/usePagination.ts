@@ -27,12 +27,13 @@ const usePagination: IUsePagination = () => {
   usePullDownRefresh(() => refresh());
 
   const fetchData = async () => {
-    const { data, pageCount } = await getPosts(pageSize);
-    currentData
-      ? setCurrentData(currentData.concat(data))
-      : setCurrentData(data);
+    const { data, pageCount } = (await getPosts(pageSize)) || {};
     if (!data || !pageCount || data.length < pageCount) {
       setHasMore(false);
+    } else {
+      currentData
+        ? setCurrentData(currentData.concat(data))
+        : setCurrentData(data);
     }
     setIsLoading(false);
     Taro.stopPullDownRefresh();
