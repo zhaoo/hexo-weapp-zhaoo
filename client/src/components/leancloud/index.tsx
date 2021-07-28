@@ -22,6 +22,7 @@ const Leancloud: FC<ILeancloudProps> = ({
   const [count, setCount] = useState<number>(0);
 
   useEffect(() => {
+    console.log(1)
     fetchCount();
     if (exp) {
       addCount();

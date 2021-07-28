@@ -98,6 +98,7 @@ const Post = () => {
                 </View>
                 <View className='info-item'>
                   <Icon name='iconheart' style={{ marginRight: 5 }} />
+                  {console.log(post.realPath)}
                   {post.realPath ? (
                     <Leancloud
                       path={post.realPath}
