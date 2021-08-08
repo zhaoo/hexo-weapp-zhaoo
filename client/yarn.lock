@@ -6146,6 +6146,11 @@ he@1.2.x, he@^1.2.0:
   resolved "https://registry.npm.taobao.org/he/download/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha1-hK5l+n6vsWX922FWauFLrwVmTw8=
 
+highlight.js@^11.1.0:
+  version "11.1.0"
+  resolved "https://registry.nlark.com/highlight.js/download/highlight.js-11.1.0.tgz#0198f7326e64ddfbea5f76b00e84ab542cf24ae8"
+  integrity sha1-AZj3Mm5k3fvqX3awDoSrVCzySug=
+
 history@^4.10.1:
   version "4.10.1"
   resolved "https://registry.npm.taobao.org/history/download/history-4.10.1.tgz#33371a65e3a83b267434e2b3f3b1b4c58aad4cf3"
