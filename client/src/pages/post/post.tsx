@@ -4,7 +4,7 @@ import { View, Image, Text } from '@tarojs/components';
 import Icon from '@/components/icon';
 import BottomBar from '@/components/bottom-bar';
 import Leancloud from '@/components/leancloud';
-// import Skeleton from './skeleton';
+import LottieLoad from '@/components/lottie-load';
 import { formateDate } from '@/utils/index';
 import { getPostBySlug } from '@/apis/api';
 import { getStorageSync, setStorageSync } from '@/utils/storage';
@@ -63,7 +63,7 @@ const Post = () => {
         const imagesTemp = images;
         imagesTemp.push(src);
         setImages(imagesTemp);
-        return `<img ${attrBegin} src='${src}' mode='widthFix' id='image_${src}' lazy-load ${attrEnd}>`;  // 重定义图片标签
+        return `<img ${attrBegin} src='${src}' mode='widthFix' id='image_${src}' lazy-load ${attrEnd}>`; // 重定义图片标签
       }
     );
     // data = data.replace(/\<img/gi, "<img mode='widthFix' id='image' lazy-load");
@@ -96,7 +96,7 @@ const Post = () => {
 
   return (
     <>
-      {/* {status === 'loading' ? <Skeleton /> : null} */}
+      {/* {status === 'loading' ? <LottieLoad /> : null} */}
       {status === 'ready' ? (
         <View className='post'>
           <View className='head'>

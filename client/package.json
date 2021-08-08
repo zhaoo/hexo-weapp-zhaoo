@@ -41,6 +41,7 @@
     "@tarojs/runtime": "3.2.1",
     "@tarojs/taro": "3.2.1",
     "leancloud-storage": "2",
+    "lottie-miniprogram": "^1.0.11",
     "react": "^17.0.0",
     "react-count-to": "^0.12.0",
     "react-dom": "^17.0.0"
