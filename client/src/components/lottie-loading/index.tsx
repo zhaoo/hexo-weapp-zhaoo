@@ -1,17 +1,15 @@
-import { FC, useEffect, useRef } from 'react';
-import Taro, { render } from '@tarojs/taro';
+import { useEffect, useRef } from 'react';
+import Taro from '@tarojs/taro';
 import { Canvas, View } from '@tarojs/components';
 import lottie from 'lottie-miniprogram';
 import loading from '@/assets/lottie/loading.json';
 import './index.scss';
 
-interface ILottieLoad {}
-
-const LottieLoad: FC<ILottieLoad> = () => {
+const LottieLoading = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    setTimeout(async () => {
+    setTimeout(() => {
       Taro.createSelectorQuery()
         .select('#canvas')
         .node((res: any) => {
@@ -36,4 +34,4 @@ const LottieLoad: FC<ILottieLoad> = () => {
   );
 };
 
-export default LottieLoad;
+export default LottieLoading;

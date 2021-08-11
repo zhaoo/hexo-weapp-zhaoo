@@ -3,12 +3,12 @@ import { View, Text } from '@tarojs/components';
 import Icon from '@/components/icon';
 import './index.scss';
 
-interface ILiteLoad {
+interface ILiteLoading {
   text?: string;
   icon?: string;
 }
 
-const LiteLoading: FC<ILiteLoad> = ({ text, icon }) => {
+const LiteLoading: FC<ILiteLoading> = ({ text, icon }) => {
   return (
     <View className='lite-load'>
       {icon ? <Icon type='image' name={icon} size={18} /> : null}

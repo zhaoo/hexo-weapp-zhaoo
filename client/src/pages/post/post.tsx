@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import Taro, { usePageScroll, getCurrentInstance } from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';
-import Icon from '@/components/icon';
-import BottomBar from '@/components/bottom-bar';
-import Leancloud from '@/components/leancloud';
-import LottieLoad from '@/components/lottie-load';
 import { formateDate } from '@/utils/index';
 import { getPostBySlug } from '@/apis/api';
 import { getStorageSync, setStorageSync } from '@/utils/storage';
+import Icon from '@/components/icon';
+import Loading from '@/components/loading';
+import Leancloud from '@/components/leancloud';
+// import BottomBar from '@/components/bottom-bar';
 import './post.scss';
 
 interface IPostProps {
@@ -66,7 +66,6 @@ const Post = () => {
         return `<img ${attrBegin} src='${src}' mode='widthFix' id='image_${src}' lazy-load ${attrEnd}>`; // 重定义图片标签
       }
     );
-    // data = data.replace(/\<img/gi, "<img mode='widthFix' id='image' lazy-load");
     return data;
   };
 
@@ -96,7 +95,7 @@ const Post = () => {
 
   return (
     <>
-      {/* {status === 'loading' ? <LottieLoad /> : null} */}
+      {status === 'loading' ? <Loading /> : null}
       {status === 'ready' ? (
         <View className='post'>
           <View className='head'>
