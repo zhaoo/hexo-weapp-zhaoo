@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import Taro, { usePageScroll, getCurrentInstance } from '@tarojs/taro';
+import Taro, { getCurrentInstance } from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';
 import { formateDate } from '@/utils/index';
 import { getPostBySlug } from '@/apis/api';
@@ -7,7 +7,7 @@ import { getStorageSync, setStorageSync } from '@/utils/storage';
 import Icon from '@/components/icon';
 import Loading from '@/components/loading';
 import Leancloud from '@/components/leancloud';
-// import BottomBar from '@/components/bottom-bar';
+import Comment from '@/components/comment';
 import './post.scss';
 
 interface IPostProps {
@@ -20,13 +20,11 @@ interface IPostProps {
 }
 
 const Post = () => {
-  const scrollRef = useRef(0);
   const [post, setPost] = useState<IPostProps>({
     date: new Date().toDateString(),
   });
   const [status, setStatus] = useState<string>('loading');
   const [images, setImages] = useState<string[]>([]);
-  // const [bottomBarVisible, setBottomBarVisible] = useState(false);
 
   useEffect(() => {
     fetchPost();
@@ -117,17 +115,13 @@ const Post = () => {
                 <View className='info-item'>
                   <Icon name='iconeye' style={{ marginRight: 5 }} />
                   {post.realPath ? (
-                    <Leancloud path={post.realPath} counter='Counter' />
+                    <Leancloud path={post.realPath} model='Counter' />
                   ) : null}
                 </View>
                 <View className='info-item'>
                   <Icon name='iconheart' style={{ marginRight: 5 }} />
                   {post.realPath ? (
-                    <Leancloud
-                      path={post.realPath}
-                      counter='Vote'
-                      exp={false}
-                    />
+                    <Leancloud path={post.realPath} model='Vote' exp={false} />
                   ) : null}
                 </View>
               </View>
@@ -140,14 +134,7 @@ const Post = () => {
               className='content'
             />
           ) : null}
-          {/* <BottomBar
-            path={post.realPath}
-            style={{
-              transform: bottomBarVisible
-                ? 'translateY(0)'
-                : 'translateY(60px)',
-            }}
-          /> */}
+          {post.realPath ? <Comment url={post.realPath} /> : null}
         </View>
       ) : null}
     </>

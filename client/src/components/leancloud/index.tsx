@@ -1,24 +1,26 @@
 import { FC, useEffect, useState } from 'react';
 import AV from 'leancloud-storage/dist/av-weapp.js';
+import { leancloud } from '../../../config.json';
+const { appId, appKey, serverURLs } = leancloud;
 
 AV.init({
-  appId: '5nmYX1URDFyDdOVu6WxizEsF-gzGzoHsz',
-  appKey: 'xllg4mYlf0eT3efi7N0VOTeH',
-  serverURLs: 'https://leancloud.cn/',
+  appId,
+  appKey,
+  serverURLs,
 });
 
 interface ILeancloudProps {
   path: string;
-  counter?: string;
+  model?: string;
   exp?: boolean;
 }
 
 const Leancloud: FC<ILeancloudProps> = ({
-  counter = 'Counter',
+  model = 'Counter',
   path,
   exp = true,
 }) => {
-  const Counter = AV.Object.extend(counter);
+  const Model = AV.Object.extend(model);
   const [count, setCount] = useState<number>(0);
 
   useEffect(() => {
@@ -29,14 +31,13 @@ const Leancloud: FC<ILeancloudProps> = ({
   }, []);
 
   const fetchCount = async () => {
-    const query = new AV.Query(Counter);
-    query.equalTo('words', path);
-    const res = await query.count();
+    const query = new AV.Query(Model);
+    const res = await query.equalTo('words', path).count();
     setCount(res);
   };
 
   const addCount = async () => {
-    const query = new Counter();
+    const query = new Model();
     query.save({ words: path });
   };
 

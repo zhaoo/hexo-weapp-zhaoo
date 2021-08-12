@@ -4,5 +4,10 @@
   "donate": {
     "wechat": "https://pic.izhaoo.com/wechat.jpg",
     "alipay": "https://pic.izhaoo.com/alipay.jpg"
+  },
+  "leancloud": {
+    "appId": "5nmYX1URDFyDdOVu6WxizEsF-gzGzoHsz",
+    "appKey": "xllg4mYlf0eT3efi7N0VOTeH",
+    "serverURLs": "https://leancloud.cn/"
   }
 }
