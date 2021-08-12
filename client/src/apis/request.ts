@@ -35,8 +35,9 @@ export const request = async (
       const msg = `Error: code ${statusCode}`;
       throw new Error(msg);
     })
-    .catch(({ error }) => {
+    .catch((error) => {
       console.error(error);
+      return;
     });
 };
 

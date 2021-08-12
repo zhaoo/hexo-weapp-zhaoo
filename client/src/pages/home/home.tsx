@@ -1,7 +1,7 @@
 import { View } from '@tarojs/components';
 import usePagination from '@/hooks/usePagination';
 import PostItem from '@/components/post-item';
-import LiteLoading from '@/components/lite-load';
+import LiteLoading from '@/components/lite-loading';
 import './home.scss';
 
 const Home = () => {

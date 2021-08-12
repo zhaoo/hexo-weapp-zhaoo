@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import Taro, { usePageScroll, getCurrentInstance } from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';
-import Icon from '@/components/icon';
-import BottomBar from '@/components/bottom-bar';
-import Leancloud from '@/components/leancloud';
-import Skeleton from './skeleton';
 import { formateDate } from '@/utils/index';
 import { getPostBySlug } from '@/apis/api';
 import { getStorageSync, setStorageSync } from '@/utils/storage';
+import Icon from '@/components/icon';
+import Loading from '@/components/loading';
+import Leancloud from '@/components/leancloud';
+// import BottomBar from '@/components/bottom-bar';
 import './post.scss';
 
 interface IPostProps {
@@ -19,32 +19,28 @@ interface IPostProps {
   realPath: string;
 }
 
-const replaceHTML = (data) => {
-  data = data.replace(/\<img/gi, "<img mode='widthFix' id='image' lazy-load");
-  return data;
-};
-
 const Post = () => {
+  const scrollRef = useRef(0);
   const [post, setPost] = useState<IPostProps>({
     date: new Date().toDateString(),
   });
-  const scrollRef = useRef(0);
   const [status, setStatus] = useState<string>('loading');
-  const [bottomBarVisible, setBottomBarVisible] = useState(false);
+  const [images, setImages] = useState<string[]>([]);
+  // const [bottomBarVisible, setBottomBarVisible] = useState(false);
 
   useEffect(() => {
     fetchPost();
   }, []);
 
-  usePageScroll((res) => {
-    const { scrollTop } = res;
-    if (scrollRef.current - scrollTop > 0) {
-      setBottomBarVisible(true);
-    } else {
-      setBottomBarVisible(false);
-    }
-    scrollRef.current = scrollTop;
-  });
+  // usePageScroll((res) => {
+  //   const { scrollTop } = res;
+  //   if (scrollRef.current - scrollTop > 0) {
+  //     setBottomBarVisible(true);
+  //   } else {
+  //     setBottomBarVisible(false);
+  //   }
+  //   scrollRef.current = scrollTop;
+  // });
 
   const fetchPost = async () => {
     const { slug } = getCurrentInstance().router.params;
@@ -59,6 +55,21 @@ const Post = () => {
     }
   };
 
+  const replaceHTML = (data) => {
+    data = data.replace(
+      /<img([^>]*)src="([^"]*)"([^>]*)>/gim,
+      (match, attrBegin, src: string, attrEnd) => {
+        // 缓存所有图片
+        const imagesTemp = images;
+        imagesTemp.push(src);
+        setImages(imagesTemp);
+        return `<img ${attrBegin} src='${src}' mode='widthFix' id='image_${src}' lazy-load ${attrEnd}>`; // 重定义图片标签
+      }
+    );
+    return data;
+  };
+
+  // 存储历史文章
   const setHistoryStorage = (data) => {
     const key = 'history';
     const arr = getStorageSync(key) || [];
@@ -71,18 +82,31 @@ const Post = () => {
     setStorageSync(arr, key);
   };
 
+  const handleClick = (e) => {
+    // 图片模态框
+    const imageMatch = e.target.id.match(/(?<=image_).*/gi);
+    if (imageMatch) {
+      Taro.previewImage({
+        current: imageMatch[0],
+        urls: images,
+      });
+    }
+  };
+
   return (
     <>
-      {status === 'loading' ? <Skeleton /> : null}
+      {status === 'loading' ? <Loading /> : null}
       {status === 'ready' ? (
         <View className='post'>
           <View className='head'>
-            <Image
-              src={post.cover}
-              lazyLoad
-              className='cover'
-              mode='aspectFill'
-            />
+            {post.cover ? (
+              <Image
+                src={post.cover}
+                lazyLoad
+                className='cover'
+                mode='aspectFill'
+              />
+            ) : null}
             <View className='mask'>
               <Text className='title'>{post.title}</Text>
               <View className='info'>
@@ -112,8 +136,9 @@ const Post = () => {
           {post.more ? (
             <View
               dangerouslySetInnerHTML={{ __html: post.more }}
+              onClick={(e) => handleClick(e)}
               className='content'
-            ></View>
+            />
           ) : null}
           {/* <BottomBar
             path={post.realPath}

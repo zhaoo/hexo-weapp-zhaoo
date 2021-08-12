@@ -28,7 +28,7 @@
       .info {
         display: flex;
         align-items: center;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
 
         .info-item {
           display: flex;
@@ -43,6 +43,7 @@
     padding: 30px;
     color: $color-middle;
     line-height: 2;
+    font-size: 0.85em;
 
     @for $i from 1 through 6 {
       .h#{$i} {
@@ -63,7 +64,6 @@
     .p,
     .li {
       .code {
-        font-size: 1em;
         background-color: $color-background-deep;
         padding: 2px 5px;
         border-radius: 2px;
@@ -73,6 +73,40 @@
 
     .a {
       text-decoration: underline;
+    }
+
+    .ul {
+      padding-left: 1.2em;
+
+      .li {
+        display: list-item;
+        list-style-type: disc;
+      }
+    }
+
+    .ol {
+      padding-left: 1.2em;
+
+      .li {
+        display: list-item;
+        list-style-type: decimal;
+      }
+    }
+
+    .strong {
+      font-weight: bold;
+    }
+
+    .em {
+      font-style: italic;
+    }
+
+    .u {
+      text-decoration: underline;
+    }
+
+    .del {
+      text-decoration: line-through;
     }
 
     .kbd {
@@ -102,7 +136,6 @@
       margin: 0;
       overflow: auto;
       margin-bottom: 20px;
-      font-size: 0.8rem;
 
       .table {
         border: none;
@@ -131,7 +164,7 @@
     }
 
     .blockquote {
-      margin: 0 0 1em;
+      margin: 0.85em 0;
       padding: 15px 20px;
       background-color: $color-background-deep;
       border-left: 4px solid $color-link;
@@ -139,6 +172,13 @@
       .p {
         margin: 0;
       }
+    }
+
+    .image-caption {
+      display: block;
+      margin: 10px auto;
+      text-align: center;
+      font-weight: bold;
     }
   }
 }
