@@ -1,7 +1,6 @@
 {
   "name": "hexo-weapp-zhaoo",
   "version": "1.0.0",
-  "private": true,
   "description": "A weapp for Hexo",
   "templateInfo": {
     "name": "default",
@@ -33,7 +32,11 @@
     "Android >= 4.1",
     "ios >= 8"
   ],
-  "author": "",
+  "author": {
+    "name": "zhaoo",
+    "email": "izhaoo@163.com",
+    "url": "https://www.izhaoo.com"
+  },
   "dependencies": {
     "@babel/runtime": "^7.7.7",
     "@tarojs/components": "3.2.1",
