@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from 'react';
-import { View, Image, Text } from '@tarojs/components';
+import { View, Image, Text, OpenData } from '@tarojs/components';
 import AV from 'leancloud-storage/dist/av-weapp.js';
 import md5 from 'crypto-js/md5';
 import { formateDate } from '@/utils/index';
 import { leancloud } from '../../../config.json';
-import './index.scss';
+import styles from './index.module.scss';
 
 const { appId, appKey, serverURLs } = leancloud;
 const gravatarUrl = 'https://cn.gravatar.com/avatar/';
@@ -41,27 +41,33 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
   };
 
   return (
-    <View className='comment'>
-      <Text className='count'>{`共${list.length}条评论`}</Text>
-      <View className='comment-wrapper'>
+    <View className={styles.comment}>
+      <Text className={styles.count}>{`共${list.length}条评论`}</Text>
+      <View className={styles.inputWrapper}>
+        <View className={styles.avatar}>
+          <OpenData type='userAvatarUrl' lang='zh_CN' />
+        </View>
+        <View className={styles.input}>雁过留痕...</View>
+      </View>
+      <View className={styles.commentWrapper}>
         {list.length > 0 &&
           list.map((item, index) => {
             const { mail, nick, comment } = item?.attributes;
             const updatedAt = item.updatedAt;
             return (
-              <View className='comment-item' key={index}>
-                <View className='author-wrapper'>
+              <View className={styles.commentItem} key={index}>
+                <View className={styles.authorWrapper}>
                   <Image
                     src={gravatarUrl + md5(mail)}
-                    className='avatar'
+                    className={styles.avatar}
                     mode='aspectFill'
                     lazyLoad
                   />
-                  <Text className='nick'>{nick}</Text>
-                  <Text className='time'>{formateDate(updatedAt)}</Text>
+                  <Text className={styles.nick}>{nick}</Text>
+                  <Text className={styles.time}>{formateDate(updatedAt)}</Text>
                 </View>
                 <View
-                  className='comment-content'
+                  className={styles.commentContent}
                   dangerouslySetInnerHTML={{ __html: replaceHTML(comment) }}
                 />
               </View>
