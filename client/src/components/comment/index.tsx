@@ -1,13 +1,13 @@
 import { FC, useEffect, useState } from 'react';
-import { View, Image, Text, OpenData } from '@tarojs/components';
+import { View, Text, OpenData, ScrollView } from '@tarojs/components';
+import CommentList from '@/components/comment-list';
+import LiteLoading from '@/components/lite-loading';
+import Pad from '@/components/pad';
 import AV from 'leancloud-storage/dist/av-weapp.js';
-import md5 from 'crypto-js/md5';
-import { formateDate } from '@/utils/index';
 import { leancloud } from '../../../config.json';
 import styles from './index.module.scss';
 
 const { appId, appKey, serverURLs } = leancloud;
-const gravatarUrl = 'https://cn.gravatar.com/avatar/';
 
 interface ICommentProps {
   model?: string;
@@ -23,6 +23,7 @@ AV.init({
 const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
   const Model = AV.Object.extend(model);
   const [list, setList] = useState<any[]>([]);
+  const [commentVisible, setCommentVisible] = useState<boolean>(false);
 
   useEffect(() => {
     fetchData();
@@ -31,50 +32,54 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
   const fetchData = async () => {
     const query = new AV.Query(Model);
     const res = await query.equalTo('url', url).find();
-    console.log(res);
-    setList(res);
-  };
-
-  const replaceHTML = (data) => {
-    data = data.replace(/\<img/gi, "<img mode='aspectFit' lazy-load");
-    return data;
+    if (res.length > 0) {
+      setList(res.reverse());
+    }
   };
 
   return (
-    <View className={styles.comment}>
-      <Text className={styles.count}>{`共${list.length}条评论`}</Text>
-      <View className={styles.inputWrapper}>
-        <View className={styles.avatar}>
-          <OpenData type='userAvatarUrl' lang='zh_CN' />
+    <>
+      <View className={styles.comment}>
+        <Text className={styles.count}>{`共${list.length}条评论`}</Text>
+        <View className={styles.inputWrapper}>
+          <View className={styles.avatar}>
+            <OpenData type='userAvatarUrl' lang='zh_CN' />
+          </View>
+          <View
+            className={styles.input}
+            onClick={() => setCommentVisible(true)}
+          >
+            雁过留痕...
+          </View>
         </View>
-        <View className={styles.input}>雁过留痕...</View>
+        <CommentList list={list} limit={3} />
+        {list.length > 3 ? (
+          <View
+            className={styles.moreTextWrapper}
+            onClick={() => setCommentVisible(true)}
+          >
+            <Text className={styles.moreText}>查看更多评论</Text>
+          </View>
+        ) : null}
       </View>
-      <View className={styles.commentWrapper}>
-        {list.length > 0 &&
-          list.map((item, index) => {
-            const { mail, nick, comment } = item?.attributes;
-            const updatedAt = item.updatedAt;
-            return (
-              <View className={styles.commentItem} key={index}>
-                <View className={styles.authorWrapper}>
-                  <Image
-                    src={gravatarUrl + md5(mail)}
-                    className={styles.avatar}
-                    mode='aspectFill'
-                    lazyLoad
-                  />
-                  <Text className={styles.nick}>{nick}</Text>
-                  <Text className={styles.time}>{formateDate(updatedAt)}</Text>
-                </View>
-                <View
-                  className={styles.commentContent}
-                  dangerouslySetInnerHTML={{ __html: replaceHTML(comment) }}
-                />
-              </View>
-            );
-          })}
-      </View>
-    </View>
+      <Pad
+        visible={commentVisible}
+        setVisible={setCommentVisible}
+        height='70vh'
+      >
+        <View className={styles.commentPad}>
+          <View className={styles.titleWrapper}>
+            <Text className={styles.title}>全部评论</Text>
+          </View>
+          <View style={{ flex: 1, overflow: 'scroll' }}>
+            <ScrollView scrollY className={styles.content}>
+              <CommentList list={list} />
+              <LiteLoading text='本来无一物，何处惹尘埃 ~' />
+            </ScrollView>
+          </View>
+        </View>
+      </Pad>
+    </>
   );
 };
 

@@ -25,7 +25,6 @@ const Post = () => {
   });
   const [status, setStatus] = useState<string>('loading');
   const [images, setImages] = useState<string[]>([]);
-
   useEffect(() => {
     fetchPost();
   }, []);

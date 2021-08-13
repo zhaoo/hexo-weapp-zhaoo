@@ -1,0 +1,52 @@
+.commentList {
+  .commentItem {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+
+    .authorWrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+
+      .avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+      }
+
+      .nick {
+        font-size: 0.85em;
+        height: 0.85em;
+        line-height: 00.85em;
+        margin-left: 20px;
+      }
+
+      .time {
+        font-size: 20px;
+        height: 0.85em;
+        line-height: 00.85em;
+        margin-left: 10px;
+        color: $color-light;
+      }
+    }
+  }
+}
+
+.commentContent {
+  overflow: scroll;
+  margin-left: 80px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #ebedf0;
+  font-size: 0.85em;
+
+  .vemoji,
+  image {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+    margin: 0 1px;
+    display: inline-block;
+  }
+}

@@ -1,0 +1,25 @@
+.pad {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 8888;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 300ms;
+
+  .padContent {
+    position: absolute;
+    width: 100vw;
+    height: 60vh;
+    bottom: 0;
+    left: 0;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: $color-white;
+    transform: translateY();
+    transition: transform 300ms;
+  }
+}
