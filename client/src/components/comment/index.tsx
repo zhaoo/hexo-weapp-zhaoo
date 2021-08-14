@@ -138,7 +138,6 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
               className={styles.input}
               type='text'
               placeholder='雁过留痕...'
-              focus
               placeholderStyle='font-size: 0.9em;'
               value={commentValue}
               onInput={({ detail }) => setCommentValue(detail.value)}
