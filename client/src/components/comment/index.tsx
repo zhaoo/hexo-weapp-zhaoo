@@ -33,7 +33,7 @@ AV.init({
 const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
   const Model = AV.Object.extend(model);
   const [list, setList] = useState<any[]>([]);
-  const [commentVisible, setCommentVisible] = useState<boolean>(true);
+  const [commentVisible, setCommentVisible] = useState<boolean>(false);
   const [commentValue, setCommentValue] = useState<string>('');
 
   useEffect(() => {
