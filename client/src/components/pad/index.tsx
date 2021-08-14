@@ -31,7 +31,9 @@ const Pad: FC<IPadProps> = ({
   return (
     <View
       className={styles.pad}
-      onClick={() => setVisible(false)}
+      onClick={() => {
+        setVisible(false);
+      }}
       catchMove
       style={{
         visibility,

@@ -1,8 +1,8 @@
-import { FC, useEffect, useState } from 'react';
-import { View, Image, Text, OpenData } from '@tarojs/components';
+import { FC, useState } from 'react';
+import { View, Image, Text } from '@tarojs/components';
 import md5 from 'crypto-js/md5';
 import { formateDate } from '@/utils/index';
-import avatar from '@/assets/images/avatar.png';
+import defaultAvatar from '@/assets/images/avatar.png';
 import styles from './index.module.scss';
 
 interface ICommentListProps {
@@ -32,17 +32,18 @@ const CommentList: FC<ICommentListProps> = ({ list, limit }) => {
     <View className={styles.commentList}>
       {list.length > 0 &&
         list.map((item, index) => {
-          const { mail, nick, comment } = item?.attributes;
+          const { mail, nick, comment, weappAvatar } = item?.attributes;
           const updatedAt = item.updatedAt;
+          const avatar = imageErrorList.includes(index)
+            ? defaultAvatar
+            : weappAvatar
+            ? weappAvatar
+            : gravatarUrl + md5(mail);
           return (
             <View className={styles.commentItem} key={index}>
               <View className={styles.authorWrapper}>
                 <Image
-                  src={
-                    imageErrorList.includes(index)
-                      ? avatar
-                      : gravatarUrl + md5(mail)
-                  }
+                  src={avatar}
                   className={styles.avatar}
                   mode='aspectFill'
                   lazyLoad
