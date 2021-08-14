@@ -32,7 +32,7 @@ const CommentList: FC<ICommentListProps> = ({ list, limit }) => {
     <View className={styles.commentList}>
       {list.length > 0 &&
         list.map((item, index) => {
-          const { mail, nick, comment, weappAvatar } = item?.attributes;
+          const { mail, nick, comment, weappAvatar } = item;
           const updatedAt = item.updatedAt;
           const avatar = imageErrorList.includes(index)
             ? defaultAvatar
