@@ -118,6 +118,17 @@ const Post = () => {
                   ) : null}
                 </View>
                 <View className='info-item'>
+                  <Icon name='iconmessage' style={{ marginRight: 5 }} />
+                  {post.realPath ? (
+                    <Leancloud
+                      path={post.realPath}
+                      model='Comment'
+                      exp={false}
+                      field='url'
+                    />
+                  ) : null}
+                </View>
+                <View className='info-item'>
                   <Icon name='iconheart' style={{ marginRight: 5 }} />
                   {post.realPath ? (
                     <Leancloud path={post.realPath} model='Vote' exp={false} />

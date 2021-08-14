@@ -13,12 +13,14 @@ interface ILeancloudProps {
   path: string;
   model?: string;
   exp?: boolean;
+  field?: string;
 }
 
 const Leancloud: FC<ILeancloudProps> = ({
   model = 'Counter',
   path,
   exp = true,
+  field = 'words',
 }) => {
   const Model = AV.Object.extend(model);
   const [count, setCount] = useState<number>(0);
@@ -32,7 +34,7 @@ const Leancloud: FC<ILeancloudProps> = ({
 
   const fetchCount = async () => {
     const query = new AV.Query(Model);
-    const res = await query.equalTo('words', path).count();
+    const res = await query.equalTo(field, path).count();
     setCount(res);
   };
 
