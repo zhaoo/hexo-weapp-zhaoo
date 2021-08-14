@@ -9,12 +9,13 @@ interface IPostItemProps {
 }
 
 const PostItem: FC<IPostItemProps> = ({ data }) => {
-  const { title = '', cover, excerpt = '', slug } = data;
+  const { title = '', cover, excerpt = '', slug, top } = data;
   return (
     <View
       className='post-item'
       onClick={() => Taro.navigateTo({ url: `/pages/post/post?slug=${slug}` })}
     >
+      {top ? <View className='top' /> : null}
       {cover ? (
         <Image className='cover' src={cover} lazyLoad mode='aspectFill' />
       ) : null}

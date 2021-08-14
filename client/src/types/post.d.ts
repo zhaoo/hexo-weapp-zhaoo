@@ -11,4 +11,5 @@ export interface IPostItem {
   tags?: string;
   updated?: string;
   categories?: { name: string; path: string }[];
+  top?: number;
 }

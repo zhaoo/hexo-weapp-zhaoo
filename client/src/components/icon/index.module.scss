@@ -1,9 +1,24 @@
 @font-face {
   font-family: "iconfont";
   /* Project id 1445822 */
-  src: url('//at.alicdn.com/t/font_1445822_wvkum27l4sk.woff2?t=1622348372642') format('woff2'),
-    url('//at.alicdn.com/t/font_1445822_wvkum27l4sk.woff?t=1622348372642') format('woff'),
-    url('//at.alicdn.com/t/font_1445822_wvkum27l4sk.ttf?t=1622348372642') format('truetype');
+  src: url('//at.alicdn.com/t/font_1445822_dybi6kylhd.woff2?t=1628908492578') format('woff2'),
+    url('//at.alicdn.com/t/font_1445822_dybi6kylhd.woff?t=1628908492578') format('woff'),
+    url('//at.alicdn.com/t/font_1445822_dybi6kylhd.ttf?t=1628908492578') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconsend:before {
+  content: "\e62f";
+}
+
+.iconclose-circle-fill:before {
+  content: "\e844";
 }
 
 .iconstar:before {
@@ -20,19 +35,6 @@
 
 .icontransaction:before {
   content: "\e786";
-}
-
-.icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.iconfont {
-  font-family: 'iconfont' !important;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 .iconwallet:before {
@@ -67,118 +69,134 @@
   content: "\e6a7";
 }
 
+.iconsearch:before {
+  content: "\e8ef";
+}
+
+.iconqrcode:before {
+  content: "\e7dd";
+}
+
+.iconmoono:before {
+  content: "\e795";
+}
+
+.iconsuno:before {
+  content: "\e83d";
+}
+
 .iconpushpin:before {
-  content: '\e7e3';
+  content: "\e7e3";
 }
 
 .iconalibaba:before {
-  content: '\e879';
+  content: "\e879";
 }
 
 .iconload:before {
-  content: '\e60a';
+  content: "\e60a";
 }
 
 .iconfile-text:before {
-  content: '\e7b9';
+  content: "\e7b9";
 }
 
 .iconbaseline-close-px:before {
-  content: '\e615';
+  content: "\e615";
 }
 
 .iconhome:before {
-  content: '\e7c6';
+  content: "\e7c6";
 }
 
 .iconcomment:before {
-  content: '\e66f';
+  content: "\e66f";
 }
 
 .icongithub-fill:before {
-  content: '\e885';
+  content: "\e885";
 }
 
 .iconpaypal:before {
-  content: '\e7b1';
+  content: "\e7b1";
 }
 
 .iconalipay:before {
-  content: '\e87c';
+  content: "\e87c";
 }
 
 .iconmail:before {
-  content: '\e7de';
+  content: "\e7de";
 }
 
 .iconinstagram:before {
-  content: '\e87f';
+  content: "\e87f";
 }
 
 .iconQQ:before {
-  content: '\e882';
+  content: "\e882";
 }
 
 .iconweibo:before {
-  content: '\e883';
+  content: "\e883";
 }
 
 .iconwechat-fill:before {
-  content: '\e884';
+  content: "\e884";
 }
 
 .iconclose-circle:before {
-  content: '\e77d';
+  content: "\e77d";
 }
 
 .iconfont-size:before {
-  content: '\e736';
+  content: "\e736";
 }
 
 .iconright:before {
-  content: '\e7eb';
+  content: "\e7eb";
 }
 
 .iconleft:before {
-  content: '\e7ec';
+  content: "\e7ec";
 }
 
 .iconfire:before {
-  content: '\e607';
+  content: "\e607";
 }
 
 .iconcaret-up:before {
-  content: '\e8ec';
+  content: "\e8ec";
 }
 
 .iconplus:before {
-  content: '\e8fe';
+  content: "\e8fe";
 }
 
 .iconmenu:before {
-  content: '\e7f4';
+  content: "\e7f4";
 }
 
 .iconcalendar:before {
-  content: '\e7d3';
+  content: "\e7d3";
 }
 
 .icontime-circle:before {
-  content: '\e784';
+  content: "\e784";
 }
 
 .iconmessage:before {
-  content: '\e78a';
+  content: "\e78a";
 }
 
 .iconeye:before {
-  content: '\e78f';
+  content: "\e78f";
 }
 
 .iconheart:before {
-  content: '\e7df';
+  content: "\e7df";
 }
 
 .iconMouse:before {
-  content: '\e633';
+  content: "\e633";
 }

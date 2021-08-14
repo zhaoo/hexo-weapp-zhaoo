@@ -16,10 +16,11 @@ export const request = async (
   url: string,
   data?: any,
   method: Method = 'GET',
-  headers = {}
+  headers = {},
+  base: boolean = true
 ) => {
   const option = {
-    url: baseUrl + url,
+    url: base ? baseUrl + url : url,
     data,
     method,
     header: {
@@ -41,10 +42,10 @@ export const request = async (
     });
 };
 
-export const get = (url, data = {}, headers = {}) => {
-  return request(url, data, 'GET', headers);
+export const get = (url, data = {}, headers = {}, base = true) => {
+  return request(url, data, 'GET', headers, base);
 };
 
-export const post = (url, data = {}, headers = {}) => {
-  return request(url, data, 'POST', headers);
+export const post = (url, data = {}, headers = {}, base = true) => {
+  return request(url, data, 'POST', headers, base);
 };
