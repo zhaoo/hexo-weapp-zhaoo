@@ -7,6 +7,7 @@ import {
   Text,
   Swiper,
   SwiperItem,
+  Button,
 } from '@tarojs/components';
 import Icon from '@/components/icon';
 import List from '@/components/list';
@@ -90,13 +91,18 @@ const My = () => {
             <Text className={styles.text}>打赏</Text>
           </View>
           <view className={styles.divide} />
-          <View
+          <Button
             className={styles.tabnavItem}
-            onClick={() => Taro.navigateTo({ url: `/pages/integral/integral` })}
+            openType='share'
+            style={{
+              padding: 0,
+              backgroundColor: '#ffffff',
+              lineHeight: '1em',
+            }}
           >
-            <Icon type='image' name='integral' size={30} />
-            <Text className={styles.text}>积分</Text>
-          </View>
+            <Icon type='image' name='share' size={30} />
+            <Text className={styles.text}>分享</Text>
+          </Button>
         </View>
         <View className={styles.listWrapper}>
           <List title='夜间模式' icon='moon' rightChildren={<ColorSwitch />} />

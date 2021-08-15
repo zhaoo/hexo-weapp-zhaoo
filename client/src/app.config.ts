@@ -9,7 +9,6 @@ export default {
     'pages/webview/webview',
     'pages/about/about',
     'pages/laboratory/laboratory',
-    'pages/integral/integral',
   ],
   window: {
     backgroundTextStyle: 'light',

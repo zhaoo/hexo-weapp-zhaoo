@@ -1,3 +1,4 @@
+import { useDidShow, showShareMenu } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import usePagination from '@/hooks/usePagination';
 import PostItem from '@/components/post-item';
@@ -6,6 +7,14 @@ import './home.scss';
 
 const Home = () => {
   const [posts, hasMore, isLoading] = usePagination();
+
+  useDidShow(() =>
+    showShareMenu({
+      showShareItems: ['qq', 'qzone', 'wechatFriends', 'wechatMoment'],
+      withShareTicket: true,
+    })
+  );
+
   return (
     <View className='home'>
       {posts.length > 0

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import Taro, { getCurrentInstance } from '@tarojs/taro';
+import Taro, { getCurrentInstance, showShareMenu } from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';
 import { formateDate } from '@/utils/index';
 import { getPostBySlug } from '@/apis/api';
@@ -25,8 +25,13 @@ const Post = () => {
   });
   const [status, setStatus] = useState<string>('loading');
   const [images, setImages] = useState<string[]>([]);
+
   useEffect(() => {
     fetchPost();
+    showShareMenu({
+      showShareItems: ['qq', 'qzone', 'wechatFriends', 'wechatMoment'],
+      withShareTicket: true,
+    });
   }, []);
 
   // usePageScroll((res) => {
