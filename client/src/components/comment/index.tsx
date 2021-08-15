@@ -73,10 +73,13 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
   //   }
   // };
 
-  const sendComment = async (userInfo) => {
+  const sendComment = async () => {
     if (!commentValue) return;
+    const userInfoRes = await Taro.getUserProfile({
+      desc: '用户昵称和头像将用于评论展示',
+    });
+    const { avatarUrl, nickName } = userInfoRes.userInfo;
     try {
-      const { nickName, avatarUrl } = userInfo.detail.userInfo;
       const ipRes = await get(
         'https://pv.sohu.com/cityjson?ie=utf-8',
         {},
@@ -174,7 +177,7 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
                 <Button
                   className={styles.send}
                   openType='getUserInfo'
-                  onGetUserInfo={(userInfo) => sendComment(userInfo)}
+                  onClick={() => sendComment()}
                 >
                   <Icon
                     name='iconsend'
