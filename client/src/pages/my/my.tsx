@@ -8,6 +8,7 @@ import {
   Swiper,
   SwiperItem,
   Button,
+  OfficialAccount,
 } from '@tarojs/components';
 import Icon from '@/components/icon';
 import List from '@/components/list';
@@ -21,34 +22,7 @@ const My = () => {
 
   return (
     <>
-      <Modal
-        visible={modalVisible}
-        setVisible={setModalVisible}
-        content={
-          <Swiper
-            className={styles.donate}
-            indicatorColor='#999'
-            indicatorActiveColor='#fff'
-            circular
-            indicatorDots
-          >
-            <SwiperItem>
-              <Image
-                className={styles.image}
-                src={donate?.wechat}
-                mode='aspectFill'
-              />
-            </SwiperItem>
-            <SwiperItem>
-              <Image
-                className={styles.image}
-                src={donate?.alipay}
-                mode='aspectFill'
-              />
-            </SwiperItem>
-          </Swiper>
-        }
-      />
+      <OfficialAccount className={styles.officialAccount} />
       <View className={styles.my}>
         <View className={styles.userWrapper}>
           <Image
@@ -132,6 +106,34 @@ const My = () => {
           />
         </View>
       </View>
+      <Modal
+        visible={modalVisible}
+        setVisible={setModalVisible}
+        content={
+          <Swiper
+            className={styles.donate}
+            indicatorColor='#999'
+            indicatorActiveColor='#fff'
+            circular
+            indicatorDots
+          >
+            <SwiperItem>
+              <Image
+                className={styles.image}
+                src={donate?.wechat}
+                mode='aspectFill'
+              />
+            </SwiperItem>
+            <SwiperItem>
+              <Image
+                className={styles.image}
+                src={donate?.alipay}
+                mode='aspectFill'
+              />
+            </SwiperItem>
+          </Swiper>
+        }
+      />
     </>
   );
 };
