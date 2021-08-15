@@ -23,6 +23,18 @@
                     "pathName": "pages/post/post",
                     "query": "slug=hexo-theme-zhaoo",
                     "scene": null
+                },
+                {
+                    "name": "pages/my/my",
+                    "pathName": "pages/my/my",
+                    "query": "",
+                    "scene": 1000
+                },
+                {
+                    "name": "pages/home/home",
+                    "pathName": "pages/home/home",
+                    "query": "",
+                    "scene": 1011
                 }
             ]
         }

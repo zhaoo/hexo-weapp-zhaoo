@@ -1,4 +1,5 @@
 import { FC, useEffect, useState } from 'react';
+import Taro from '@tarojs/taro';
 import {
   View,
   Text,
@@ -12,23 +13,22 @@ import CommentList from '@/components/comment-list';
 import LiteLoading from '@/components/lite-loading';
 import Pad from '@/components/pad';
 import Icon from '@/components/icon';
-import AV from 'leancloud-storage/dist/av-weapp.js';
 import { get } from '@/apis/request';
+import AV from 'leancloud-storage/dist/av-weapp.js';
 import { leancloud } from '../../../config.json';
 import styles from './index.module.scss';
 
 const { appId, appKey, serverURLs } = leancloud;
-
-interface ICommentProps {
-  model?: string;
-  url: string;
-}
 
 AV.init({
   appId,
   appKey,
   serverURLs,
 });
+interface ICommentProps {
+  model?: string;
+  url: string;
+}
 
 const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
   const Model = AV.Object.extend(model);
@@ -40,18 +40,46 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    const query = new AV.Query(Model);
-    const res = await query.equalTo('url', url).find();
-    if (res.length > 0) {
-      setList(res.reverse());
-    }
+  const fetchData = () => {
+    Taro.cloud
+      .callFunction({
+        name: 'comment',
+        data: {
+          url,
+          appId,
+          appKey,
+          serverURLs,
+        },
+      })
+      .then(({ result }: any) => {
+        if (result && result.success) {
+          setList(result.data);
+        }
+      })
+      .catch();
   };
 
-  const sendComment = async (userInfo) => {
+  // const fetchData = async () => {
+  // AV.init({
+  //   appId,
+  //   appKey,
+  //   serverURLs,
+  // });
+  // const Model = AV.Object.extend(model);
+  //   const query = new AV.Query(Model);
+  //   const res = await query.equalTo('url', url).find();
+  //   if (res.length > 0) {
+  //     setList(res.reverse());
+  //   }
+  // };
+
+  const sendComment = async () => {
     if (!commentValue) return;
+    const userInfoRes = await Taro.getUserProfile({
+      desc: '用户昵称和头像将用于评论展示',
+    });
+    const { avatarUrl, nickName } = userInfoRes.userInfo;
     try {
-      const { nickName, avatarUrl } = userInfo.detail.userInfo;
       const ipRes = await get(
         'https://pv.sohu.com/cityjson?ie=utf-8',
         {},
@@ -131,6 +159,7 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
             <ScrollView scrollY className={styles.content}>
               <CommentList list={list} />
               <LiteLoading text='本来无一物，何处惹尘埃 ~' />
+              <View className={styles.placeholder} />
             </ScrollView>
           </View>
           <View className={styles.inputWrapper}>
@@ -139,6 +168,7 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
               type='text'
               placeholder='雁过留痕...'
               placeholderStyle='font-size: 0.9em;'
+              cursorSpacing={20}
               value={commentValue}
               onInput={({ detail }) => setCommentValue(detail.value)}
             />
@@ -147,7 +177,7 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
                 <Button
                   className={styles.send}
                   openType='getUserInfo'
-                  onGetUserInfo={(userInfo) => sendComment(userInfo)}
+                  onClick={() => sendComment()}
                 >
                   <Icon
                     name='iconsend'
