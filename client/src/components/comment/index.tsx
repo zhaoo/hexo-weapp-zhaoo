@@ -156,6 +156,7 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
             <ScrollView scrollY className={styles.content}>
               <CommentList list={list} />
               <LiteLoading text='本来无一物，何处惹尘埃 ~' />
+              <View className={styles.placeholder} />
             </ScrollView>
           </View>
           <View className={styles.inputWrapper}>
@@ -164,6 +165,7 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
               type='text'
               placeholder='雁过留痕...'
               placeholderStyle='font-size: 0.9em;'
+              cursorSpacing={20}
               value={commentValue}
               onInput={({ detail }) => setCommentValue(detail.value)}
             />

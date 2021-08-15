@@ -20,20 +20,28 @@ exports.main = async (event, context) => {
       };
     }
     const openid = cloud.getWXContext().OPENID;
-    commentRes.forEach(async (item, index) => {
-      const secRes = await cloud.openapi.security.msgSecCheck({
-        version: 2,
-        openid,
-        scene: 2,
-        content: item.attributes.comment,
+    const secFunc = [];
+    const result = [];
+    commentRes.forEach((item) => {
+      secFunc.push(
+        cloud.openapi.security.msgSecCheck({
+          version: 2,
+          openid,
+          scene: 1,
+          content: item.attributes.comment,
+        })
+      );
+    });
+    await Promise.all(secFunc).then((res) => {
+      res.forEach((item, index) => {
+        if (item.result.suggest === 'pass') {
+          result.push(commentRes[index]);
+        }
       });
-      if (secRes && secRes.errCode !== 0) {
-        commentRes.splice(index, 1);
-      }
     });
     return {
       success: true,
-      data: commentRes.reverse(),
+      data: result.reverse(),
     };
   } catch (e) {
     return {
