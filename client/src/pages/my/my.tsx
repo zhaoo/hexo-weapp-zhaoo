@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import Taro from '@tarojs/taro';
+import Taro, {
+  useDidShow,
+  showShareMenu,
+  useShareTimeline,
+} from '@tarojs/taro';
 import {
   View,
   Image,
@@ -19,6 +23,14 @@ import styles from './my.module.scss';
 
 const My = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+
+  useDidShow(() => {
+    showShareMenu({
+      showShareItems: ['qq', 'qzone', 'wechatFriends', 'wechatMoment'],
+      withShareTicket: true,
+    });
+    useShareTimeline(() => {});
+  });
 
   return (
     <>

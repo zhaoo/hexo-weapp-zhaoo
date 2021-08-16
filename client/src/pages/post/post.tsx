@@ -32,6 +32,7 @@ const Post = () => {
       showShareItems: ['qq', 'qzone', 'wechatFriends', 'wechatMoment'],
       withShareTicket: true,
     });
+    useShareTimeline(() => {});
   }, []);
 
   // usePageScroll((res) => {

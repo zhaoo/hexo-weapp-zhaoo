@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { showShareMenu, useShareTimeline } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import GalleryItem from '@/components/gallery-item';
 import { getGalleries } from '@/apis/api';
@@ -10,6 +11,11 @@ const Galleries = () => {
 
   useEffect(() => {
     fetchGalleriesData();
+    showShareMenu({
+      showShareItems: ['qq', 'qzone', 'wechatFriends', 'wechatMoment'],
+      withShareTicket: true,
+    });
+    useShareTimeline(() => {});
   }, []);
 
   const fetchGalleriesData = async () => {
