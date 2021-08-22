@@ -1,5 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
-import Taro, { getCurrentInstance, showShareMenu } from '@tarojs/taro';
+import { useState, useEffect } from 'react';
+import Taro, {
+  getCurrentInstance,
+  useShareTimeline,
+  useShareAppMessage,
+} from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';
 import { formateDate } from '@/utils/index';
 import { getPostBySlug } from '@/apis/api';
@@ -20,20 +24,30 @@ interface IPostProps {
 }
 
 const Post = () => {
-  const [post, setPost] = useState<IPostProps>({
-    date: new Date().toDateString(),
-  });
+  const [post, setPost] = useState<IPostProps>({});
   const [status, setStatus] = useState<string>('loading');
   const [images, setImages] = useState<string[]>([]);
+  const [slug] = useState<string>(
+    getCurrentInstance().router?.params.slug || ''
+  );
 
   useEffect(() => {
     fetchPost();
-    showShareMenu({
-      showShareItems: ['qq', 'qzone', 'wechatFriends', 'wechatMoment'],
-      withShareTicket: true,
-    });
-    useShareTimeline(() => {});
   }, []);
+
+  useShareTimeline(() => {
+    return {
+      title: post.title,
+      imageUrl: post.cover,
+    };
+  });
+
+  useShareAppMessage(() => {
+    return {
+      title: post.title,
+      imageUrl: post.cover,
+    };
+  });
 
   // usePageScroll((res) => {
   //   const { scrollTop } = res;
@@ -46,7 +60,6 @@ const Post = () => {
   // });
 
   const fetchPost = async () => {
-    const { slug } = getCurrentInstance().router.params;
     const data = await getPostBySlug(slug);
     if (data) {
       const { more, title } = data;

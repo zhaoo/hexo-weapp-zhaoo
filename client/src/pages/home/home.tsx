@@ -1,4 +1,4 @@
-import { useDidShow, showShareMenu, useShareTimeline } from '@tarojs/taro';
+import { useShareTimeline, useShareAppMessage } from '@tarojs/taro';
 import { ScrollView } from '@tarojs/components';
 import usePagination from '@/hooks/usePagination';
 import PostItem from '@/components/post-item';
@@ -8,12 +8,10 @@ import './home.scss';
 const Home = () => {
   const [posts, hasMore, isLoading] = usePagination();
 
-  useDidShow(() => {
-    showShareMenu({
-      showShareItems: ['qq', 'qzone', 'wechatFriends', 'wechatMoment'],
-      withShareTicket: true,
-    });
-    useShareTimeline(() => {});
+  useShareAppMessage(() => {
+    return {
+      title: 'zhaoo',
+    };
   });
 
   return (

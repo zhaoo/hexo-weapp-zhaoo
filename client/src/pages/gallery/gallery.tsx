@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import Taro, {
   getCurrentInstance,
-  showShareMenu,
   useShareTimeline,
+  useShareAppMessage,
 } from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';
 import { getGalleryByName } from '@/apis/api';
@@ -15,12 +15,21 @@ const Gallery = () => {
 
   useEffect(() => {
     fetchGalleryData();
-    showShareMenu({
-      showShareItems: ['qq', 'qzone', 'wechatFriends', 'wechatMoment'],
-      withShareTicket: true,
-    });
-    useShareTimeline(() => {});
   }, []);
+
+  useShareTimeline(() => {
+    return {
+      title: gallery.name,
+      imageUrl: gallery.photos[0],
+    };
+  });
+
+  useShareAppMessage(() => {
+    return {
+      title: gallery.name,
+      imageUrl: gallery.photos[0],
+    };
+  });
 
   const fetchGalleryData = async () => {
     Taro.setNavigationBarTitle({ title: name });
