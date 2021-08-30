@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Taro from '@tarojs/taro';
 import {
   View,
   Image,

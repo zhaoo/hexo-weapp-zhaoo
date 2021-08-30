@@ -42,4 +42,9 @@ export default {
       },
     ],
   },
+  permission: {
+    'scope.userLocation': {
+      desc: '您的位置信息将用于访问统计',
+    },
+  },
 };
