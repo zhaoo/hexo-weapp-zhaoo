@@ -82,6 +82,12 @@ const Post = () => {
         return `<img ${attrBegin} src='${src}' mode='widthFix' id='image_${src}' lazy-load ${attrEnd}>`; // 重定义图片标签
       }
     );
+    data = data.replace(
+      /<a([^>]*)href="([^"]*)"([^>]*)>/gim,
+      (match, attrBegin, href: string, attrEnd) => {
+        return `<a ${attrBegin} id='link_${href}' ${attrEnd}>`; // 重定义链接标签
+      }
+    );
     return data;
   };
 
@@ -101,10 +107,15 @@ const Post = () => {
   const handleClick = (e) => {
     // 图片模态框
     const imageMatch = e.target.id.match(/(?<=image_).*/gi);
+    const linkMatch = e.target.id.match(/(?<=link_).*/gi);
     if (imageMatch) {
       Taro.previewImage({
         current: imageMatch[0],
         urls: images,
+      });
+    } else if (linkMatch) {
+      Taro.setClipboardData({
+        data: linkMatch[0],
       });
     }
   };

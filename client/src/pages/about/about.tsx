@@ -15,10 +15,14 @@ const About = () => {
           icon='github'
           arrow
           extraText='hexo-weapp-zhaoo'
-          onClick={() =>
-            Taro.navigateTo({
-              url: `/pages/webview/webview?url=https://github.com/zhaoo/hexo-weapp-zhaoo`,
-            })
+          onClick={
+            () =>
+              Taro.setClipboardData({
+                data: 'https://github.com/zhaoo/hexo-weapp-zhaoo',
+              })
+            // Taro.navigateTo({
+            //   url: `/pages/webview/webview?url=https://github.com/zhaoo/hexo-weapp-zhaoo`,
+            // })
           }
         />
         <List
@@ -26,10 +30,14 @@ const About = () => {
           icon='QQ'
           arrow
           extraText='550262893'
-          onClick={() =>
-            Taro.navigateTo({
-              url: `/pages/webview/webview?url=https://qm.qq.com/cgi-bin/qm/qr?k=L0VjfLZ0MAzSuCjmrSf5H37FiVCndnA2&jump_from=webapi`,
-            })
+          onClick={
+            () =>
+              Taro.setClipboardData({
+                data: 'https://qm.qq.com/cgi-bin/qm/qr?k=L0VjfLZ0MAzSuCjmrSf5H37FiVCndnA2&jump_from=webapi',
+              })
+            // Taro.navigateTo({
+            //   url: `/pages/webview/webview?url=https://qm.qq.com/cgi-bin/qm/qr?k=L0VjfLZ0MAzSuCjmrSf5H37FiVCndnA2&jump_from=webapi`,
+            // })
           }
         />
       </View>

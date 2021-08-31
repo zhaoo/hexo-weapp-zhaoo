@@ -40,12 +40,25 @@
         border-radius: 50%;
       }
 
-      .nickname {
-        margin-left: 40px;
-        font-size: 36px;
-        font-weight: bold;
-        color: $color-background;
+      .userContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 30px;
+
+        .nickname {
+          font-size: 36px;
+          font-weight: bold;
+          color: $color-white;
+        }
+
+        .motto {
+          @include substr(1);
+          font-size: 24px;
+          color: $color-white;
+        }
       }
+
     }
   }
 

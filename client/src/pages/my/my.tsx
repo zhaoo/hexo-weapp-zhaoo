@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Taro from '@tarojs/taro';
 import {
   View,
@@ -14,11 +14,19 @@ import Icon from '@/components/icon';
 import List from '@/components/list';
 import ColorSwitch from '@/components/color-switch';
 import Modal from '@/components/modal';
-import { webUrl, donate } from '../../../config.json';
+import { get } from '@/apis/request';
+import { webUrl, donate, motto } from '../../../config.json';
 import styles from './my.module.scss';
 
 const My = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [mottoText, setMottoText] = useState<string>(motto.default);
+
+  useEffect(() => {
+    get(motto.api, {}, {}, false)
+      .then((res: string) => setMottoText(res))
+      .catch();
+  }, []);
 
   return (
     <>
@@ -33,8 +41,11 @@ const My = () => {
             <View className={styles.avatar}>
               <OpenData type='userAvatarUrl' lang='zh_CN' />
             </View>
-            <View className={styles.nickname}>
-              <OpenData type='userNickName' lang='zh_CN' defaultText='用户' />
+            <View className={styles.userContent}>
+              <View className={styles.nickname}>
+                <OpenData type='userNickName' lang='zh_CN' defaultText='用户' />
+              </View>
+              <Text className={styles.motto}>{mottoText}</Text>
             </View>
           </View>
         </View>
@@ -84,10 +95,14 @@ const My = () => {
             title='网页博客'
             icon='cloud'
             arrow
-            onClick={() =>
-              Taro.navigateTo({
-                url: `/pages/webview/webview?url=${webUrl}`,
-              })
+            onClick={
+              () =>
+                Taro.setClipboardData({
+                  data: webUrl,
+                })
+              // Taro.navigateTo({
+              //   url: `/pages/webview/webview?url=${webUrl}`,
+              // })
             }
           />
           <List
