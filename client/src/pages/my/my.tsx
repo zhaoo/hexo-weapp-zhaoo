@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Taro from '@tarojs/taro';
 import {
   View,
@@ -21,12 +21,50 @@ import styles from './my.module.scss';
 const My = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [mottoText, setMottoText] = useState<string>(motto.default);
+  const [motion, setMotion] = useState<[number, number]>([0, 0]);
+  const bgRef = useRef<HTMLInputElement | null>(null);
+  const bannerRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
+    fetchMotto();
+    banner3d();
+  }, []);
+
+  useEffect(() => {
+    if (
+      motion[0] < -100 ||
+      motion[0] > 100 ||
+      motion[1] < -100 ||
+      motion[1] > 100
+    )
+      return;
+    if (bgRef.current) {
+      bgRef.current.style.transform = `translateX(${motion[0] / 9}px)`;
+    }
+    if (bannerRef.current) {
+      bannerRef.current.style.transform = `translate(${-motion[0] / 9}px, ${
+        -motion[1] / 9
+      }px)`;
+    }
+  }, [motion]);
+
+  const banner3d = () => {
+    Taro.startDeviceMotionListening({
+      success: () => {
+        Taro.onDeviceMotionChange((res: any) => {
+          const { beta, gamma } = res;
+          setMotion([gamma, beta]);
+        });
+      },
+      interval: 'ui',
+    });
+  };
+
+  const fetchMotto = () => {
     get(motto.api, {}, {}, false)
       .then((res: string) => setMottoText(res))
       .catch();
-  }, []);
+  };
 
   return (
     <>
@@ -36,6 +74,7 @@ const My = () => {
           <Image
             className={styles.backgroundImage}
             src='https://pic.izhaoo.com/20210320231053.jpg'
+            ref={bgRef}
           />
           <View className={styles.user}>
             <View className={styles.avatar}>
@@ -49,7 +88,7 @@ const My = () => {
             </View>
           </View>
         </View>
-        <View className={styles.tabnav}>
+        <View className={styles.tabnav} ref={bannerRef}>
           <View
             className={styles.tabnavItem}
             onClick={() => Taro.navigateTo({ url: `/pages/history/history` })}

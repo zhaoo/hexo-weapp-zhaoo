@@ -15,9 +15,9 @@
   .userWrapper {
     .backgroundImage {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
+      top: 0px;
+      left: -20px;
+      width: calc(100vw + 40px);
       height: calc(100vw * 3 / 4);
     }
 
@@ -41,6 +41,7 @@
       }
 
       .userContent {
+        flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -58,7 +59,6 @@
           color: $color-white;
         }
       }
-
     }
   }
 
@@ -103,7 +103,6 @@
     left: 0;
     margin-top: 22.5vw;
   }
-
 }
 
 .donate {
