@@ -129,19 +129,21 @@ const My = () => {
           </Button>
         </View>
         <View className={styles.listWrapper}>
-          <List title='夜间模式' icon='moon' rightChildren={<ColorSwitch />} />
+          <List
+            title='我的评论'
+            icon='message-normal'
+            arrow
+            onClick={() => Taro.navigateTo({ url: `/pages/comment/comment` })}
+          />
+          {/* <List title='夜间模式' icon='moon' rightChildren={<ColorSwitch />} /> */}
           <List
             title='网页博客'
             icon='cloud'
             arrow
-            onClick={
-              () =>
-                Taro.setClipboardData({
-                  data: webUrl,
-                })
-              // Taro.navigateTo({
-              //   url: `/pages/webview/webview?url=${webUrl}`,
-              // })
+            onClick={() =>
+              Taro.setClipboardData({
+                data: webUrl,
+              })
             }
           />
           <List

@@ -1,0 +1,25 @@
+.immersiveTitlebar {
+  width: 100vw;
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  opacity: 0;
+}
+
+.container {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.title {
+  font-size: 1em;
+}

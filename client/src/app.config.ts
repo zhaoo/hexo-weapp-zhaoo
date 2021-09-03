@@ -9,6 +9,7 @@ export default {
     'pages/webview/webview',
     'pages/about/about',
     'pages/laboratory/laboratory',
+    'pages/comment/comment',
   ],
   window: {
     backgroundTextStyle: 'light',

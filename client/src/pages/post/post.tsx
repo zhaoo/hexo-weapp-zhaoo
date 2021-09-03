@@ -12,6 +12,7 @@ import Icon from '@/components/icon';
 import Loading from '@/components/loading';
 import Leancloud from '@/components/leancloud';
 import Comment from '@/components/comment';
+import ImmersiveTitlebar from '@/components/immersive-titlebar';
 import './post.scss';
 
 interface IPostProps {
@@ -125,6 +126,7 @@ const Post = () => {
       {status === 'loading' ? <Loading /> : null}
       {status === 'ready' ? (
         <View className='post'>
+          <ImmersiveTitlebar title={post.title || ''} />
           <View className='head'>
             {post.cover ? (
               <Image
