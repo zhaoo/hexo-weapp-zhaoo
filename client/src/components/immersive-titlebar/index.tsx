@@ -5,6 +5,7 @@ import {
   getMenuButtonBoundingClientRect,
   navigateBack,
   switchTab,
+  pageScrollTo,
 } from '@tarojs/taro';
 import { Text, View } from '@tarojs/components';
 import Icon from '@/components/icon';
@@ -48,6 +49,12 @@ const ImmersiveTitlebar: FC<IImmersiveTitlebarProps> = ({ title }) => {
       className={styles.immersiveTitlebar}
       ref={titlebarRef}
       style={{ height: titlebarHeight[2] }}
+      onClick={() =>
+        pageScrollTo({
+          scrollTop: 0,
+          duration: 300,
+        })
+      }
     >
       <View className={styles.container} style={{ height: titlebarHeight[0] }}>
         <Icon
