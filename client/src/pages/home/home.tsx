@@ -1,4 +1,4 @@
-import { useShareTimeline, useShareAppMessage } from '@tarojs/taro';
+import { useShareAppMessage } from '@tarojs/taro';
 import { ScrollView } from '@tarojs/components';
 import usePagination from '@/hooks/usePagination';
 import PostItem from '@/components/post-item';

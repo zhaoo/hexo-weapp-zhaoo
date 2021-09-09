@@ -1,4 +1,10 @@
 .comment {
   width: 750px;
   padding: 0 30px;
+
+  .count {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: $color-default;
+  }
 }

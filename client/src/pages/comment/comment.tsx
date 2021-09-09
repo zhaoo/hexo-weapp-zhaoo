@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Taro, { useReachBottom } from '@tarojs/taro';
-import { View } from '@tarojs/components';
+import { View, Text } from '@tarojs/components';
 import CommentList from '@/components/comment-list';
 import LiteLoading from '@/components/lite-loading';
 import { leancloud } from '../../../config.json';
@@ -12,6 +12,7 @@ const pageSize = 20;
 const Comment = () => {
   const [list, setList] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(0);
+  const [count, setCount] = useState<number>(0);
   const [hasMore, setHasMore] = useState<boolean>(true);
 
   useEffect(() => {
@@ -39,6 +40,7 @@ const Comment = () => {
       .then(({ result }: any) => {
         if (result && result.success) {
           setList(list.concat(result.data));
+          setCount(result.count);
           if (result.count <= (currentPage + 1) * pageSize) {
             setHasMore(false);
           }
@@ -49,7 +51,8 @@ const Comment = () => {
 
   return (
     <View className={styles.comment}>
-      <CommentList list={list} />
+      <Text className={styles.count}>{`共${count}条评论`}</Text>
+      <CommentList list={list} needJump />
       {hasMore ? (
         <LiteLoading text='正在加载...' icon='jingyu' />
       ) : (

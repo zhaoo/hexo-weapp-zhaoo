@@ -1,3 +1,3 @@
 export default {
-  navigationBarTitleText: '我的评论',
+  navigationBarTitleText: '全部评论',
 };
