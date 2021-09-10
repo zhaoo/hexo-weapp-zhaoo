@@ -131,7 +131,7 @@ const My = () => {
         <View className={styles.listWrapper}>
           <List
             title='全部评论'
-            icon='message-normal'
+            icon='message'
             arrow
             onClick={() => Taro.navigateTo({ url: `/pages/comment/comment` })}
           />
