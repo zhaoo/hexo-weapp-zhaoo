@@ -15,9 +15,9 @@
   .userWrapper {
     .backgroundImage {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
+      top: 0px;
+      left: -20px;
+      width: calc(100vw + 40px);
       height: calc(100vw * 3 / 4);
     }
 
@@ -40,11 +40,24 @@
         border-radius: 50%;
       }
 
-      .nickname {
-        margin-left: 40px;
-        font-size: 36px;
-        font-weight: bold;
-        color: $color-background;
+      .userContent {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 30px;
+
+        .nickname {
+          font-size: 36px;
+          font-weight: bold;
+          color: $color-white;
+        }
+
+        .motto {
+          @include substr(1);
+          font-size: 24px;
+          color: $color-white;
+        }
       }
     }
   }
@@ -90,7 +103,6 @@
     left: 0;
     margin-top: 22.5vw;
   }
-
 }
 
 .donate {

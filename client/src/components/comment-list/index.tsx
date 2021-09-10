@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import Taro from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';
 import md5 from 'crypto-js/md5';
 import { formateDate } from '@/utils/index';
@@ -8,6 +9,7 @@ import styles from './index.module.scss';
 interface ICommentListProps {
   list: any[];
   limit?: number;
+  needJump?: boolean;
 }
 
 const gravatarUrl = 'https://sdn.geekzu.org/avatar/';
@@ -17,11 +19,22 @@ const replaceHTML = (data) => {
   return data;
 };
 
-const CommentList: FC<ICommentListProps> = ({ list, limit }) => {
+const CommentList: FC<ICommentListProps> = ({
+  list,
+  limit,
+  needJump = false,
+}) => {
   const [imageErrorList, setImageErrorList] = useState<number[]>([]);
 
   const handleImageError = (key) => {
     setImageErrorList([...imageErrorList, key]);
+  };
+
+  const handleClick = (url) => {
+    if (!needJump) return;
+    url = url.split(/[/]\d{4}[/]\d{2}[/]\d{2}[/]/)[1];
+    url = url.substr(0, url.length - 1);
+    Taro.navigateTo({ url: `/pages/post/post?slug=${url}` });
   };
 
   if (limit) {
@@ -40,7 +53,11 @@ const CommentList: FC<ICommentListProps> = ({ list, limit }) => {
             ? weappAvatar
             : gravatarUrl + md5(mail);
           return (
-            <View className={styles.commentItem} key={index}>
+            <View
+              className={styles.commentItem}
+              key={index}
+              onClick={() => handleClick(item.url)}
+            >
               <View className={styles.authorWrapper}>
                 <Image
                   src={avatar}

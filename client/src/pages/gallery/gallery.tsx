@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
-import Taro, { getCurrentInstance } from '@tarojs/taro';
+import Taro, {
+  getCurrentInstance,
+  useShareTimeline,
+  useShareAppMessage,
+} from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';
 import { getGalleryByName } from '@/apis/api';
 import { IGalleryItem } from '@/types/gallery';
@@ -12,6 +16,20 @@ const Gallery = () => {
   useEffect(() => {
     fetchGalleryData();
   }, []);
+
+  useShareTimeline(() => {
+    return {
+      title: gallery.name,
+      imageUrl: gallery.photos[0],
+    };
+  });
+
+  useShareAppMessage(() => {
+    return {
+      title: gallery.name,
+      imageUrl: gallery.photos[0],
+    };
+  });
 
   const fetchGalleryData = async () => {
     Taro.setNavigationBarTitle({ title: name });

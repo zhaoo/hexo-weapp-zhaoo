@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useShareTimeline, useShareAppMessage } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import GalleryItem from '@/components/gallery-item';
 import { getGalleries } from '@/apis/api';
@@ -16,6 +17,20 @@ const Galleries = () => {
     const res = await getGalleries();
     setGalleries(res);
   };
+
+  useShareTimeline(() => {
+    return {
+      title: '相册',
+      imageUrl: galleries[0].cover,
+    };
+  });
+
+  useShareAppMessage(() => {
+    return {
+      title: '相册',
+      imageUrl: galleries[0].cover,
+    };
+  });
 
   return (
     <View className='galleries'>

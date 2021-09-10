@@ -9,5 +9,12 @@
     "appId": "5nmYX1URDFyDdOVu6WxizEsF-gzGzoHsz",
     "appKey": "xllg4mYlf0eT3efi7N0VOTeH",
     "serverURLs": "https://leancloud.cn/"
+  },
+  "baiduAnalyze": {
+    "appKey": "f6ba65005c"
+  },
+  "motto": {
+    "api": "https://v1.hitokoto.cn/?encode=text&c=i",
+    "default": "我在开了灯的床头下，想问问自己的心啊。"
   }
 }

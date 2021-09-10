@@ -4,15 +4,15 @@ cloud.init();
 
 exports.main = async (event, context) => {
   try {
-    const { url, appId, appKey, serverURLs } = event;
+    const { sql, appId, appKey, serverURLs } = event;
     AV.init({
       appId,
       appKey,
       serverURLs,
     });
-    const Model = AV.Object.extend('Comment');
-    const query = new AV.Query(Model);
-    const commentRes = await query.equalTo('url', url).find();
+    res = await AV.Query.doCloudQuery(sql);
+    const count = res.count;
+    const commentRes = res.results;
     if (!commentRes || commentRes.length <= 0) {
       return {
         success: false,
@@ -41,7 +41,8 @@ exports.main = async (event, context) => {
     });
     return {
       success: true,
-      data: result.reverse(),
+      data: result,
+      count,
     };
   } catch (e) {
     return {

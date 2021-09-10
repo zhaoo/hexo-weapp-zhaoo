@@ -7,9 +7,16 @@ interface IIconProps {
   type?: 'font' | 'image';
   size?: number;
   style?: CSSProperties;
+  onClick?: () => void;
 }
 
-const Icon: FC<IIconProps> = ({ name, type = 'font', size, style }) => {
+const Icon: FC<IIconProps> = ({
+  name,
+  type = 'font',
+  size,
+  style,
+  onClick,
+}) => {
   let imageSrc;
   if (type === 'image') {
     imageSrc = require(`@/assets/iconfont/${name}.png`);
@@ -23,6 +30,7 @@ const Icon: FC<IIconProps> = ({ name, type = 'font', size, style }) => {
         width: size,
         height: size,
       }}
+      onClick={onClick}
     >
       {type === 'font' ? (
         <Text

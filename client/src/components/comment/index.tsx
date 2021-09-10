@@ -45,10 +45,10 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
       .callFunction({
         name: 'comment',
         data: {
-          url,
           appId,
           appKey,
           serverURLs,
+          sql: `select * from Comment where url = '${url}' order by createdAt desc`,
         },
       })
       .then(({ result }: any) => {
@@ -58,20 +58,6 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
       })
       .catch();
   };
-
-  // const fetchData = async () => {
-  // AV.init({
-  //   appId,
-  //   appKey,
-  //   serverURLs,
-  // });
-  // const Model = AV.Object.extend(model);
-  //   const query = new AV.Query(Model);
-  //   const res = await query.equalTo('url', url).find();
-  //   if (res.length > 0) {
-  //     setList(res.reverse());
-  //   }
-  // };
 
   const sendComment = async () => {
     if (!commentValue) return;
@@ -95,7 +81,7 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
       query.save({
         url,
         comment: `<p>${commentValue}</p>`,
-        mail: 'izhaoo@163.com',
+        mail: '',
         nick: nickName,
         insertedAt: new Date(),
         weappAvatar: avatarUrl,

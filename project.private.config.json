@@ -35,6 +35,12 @@
                     "pathName": "pages/home/home",
                     "query": "",
                     "scene": 1011
+                },
+                {
+                    "name": "pages/comment/comment",
+                    "pathName": "pages/comment/comment",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }
