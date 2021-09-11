@@ -51,16 +51,6 @@ const Post = () => {
     };
   });
 
-  // usePageScroll((res) => {
-  //   const { scrollTop } = res;
-  //   if (scrollRef.current - scrollTop > 0) {
-  //     setBottomBarVisible(true);
-  //   } else {
-  //     setBottomBarVisible(false);
-  //   }
-  //   scrollRef.current = scrollTop;
-  // });
-
   const fetchPost = async () => {
     const data = await getPostBySlug(slug);
     if (data) {
@@ -103,7 +93,7 @@ const Post = () => {
       }
     });
     arr.push(data);
-    setStorageSync(arr, key);
+    setStorageSync(key, arr);
   };
 
   const handleClick = (e) => {

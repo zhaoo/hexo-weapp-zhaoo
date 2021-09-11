@@ -3,7 +3,7 @@ import Taro from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';
 import { IPostItem } from '@/types/post';
 import { formateDate } from '@/utils/index';
-import './index.scss';
+import styles from './index.module.scss';
 
 interface IHistoryItemProps {
   data: IPostItem;
@@ -12,20 +12,25 @@ interface IHistoryItemProps {
 const HistoryItem: FC<IHistoryItemProps> = ({ data }) => {
   return (
     <View
-      className='history-item'
+      className={styles.historyItem}
       onClick={() => {
         Taro.navigateTo({ url: `/pages/post/post?slug=${data.slug}` });
       }}
     >
       {data.cover ? (
-        <Image src={data.cover} lazyLoad className='cover' mode='aspectFill' />
+        <Image
+          className={styles.cover}
+          src={data.cover}
+          lazyLoad
+          mode='aspectFill'
+        />
       ) : null}
-      <View className='content'>
-        <Text className='title'>{data.title || ''}</Text>
-        <View className='excerpt'>
+      <View className={styles.content}>
+        <Text className={styles.title}>{data.title || ''}</Text>
+        <View className={styles.excerpt}>
           <Text>{data.excerpt || ''}</Text>
         </View>
-        <View className='info'>
+        <View className={styles.info}>
           <Text>{formateDate(data.date) || ''}</Text>
         </View>
       </View>

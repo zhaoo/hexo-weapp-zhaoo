@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState, FC } from 'react';
 import Taro from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';
 import md5 from 'crypto-js/md5';
@@ -26,6 +26,10 @@ const CommentList: FC<ICommentListProps> = ({
 }) => {
   const [imageErrorList, setImageErrorList] = useState<number[]>([]);
 
+  if (limit) {
+    list = list.slice(0, limit);
+  }
+
   const handleImageError = (key) => {
     setImageErrorList([...imageErrorList, key]);
   };
@@ -36,10 +40,6 @@ const CommentList: FC<ICommentListProps> = ({
     url = url.substr(0, url.length - 1);
     Taro.navigateTo({ url: `/pages/post/post?slug=${url}` });
   };
-
-  if (limit) {
-    list = list.slice(0, limit);
-  }
 
   return (
     <View className={styles.commentList}>

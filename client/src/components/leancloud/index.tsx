@@ -1,13 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import AV from 'leancloud-storage/dist/av-weapp.js';
 import { leancloud } from '../../../config.json';
-const { appId, appKey, serverURLs } = leancloud;
-
-AV.init({
-  appId,
-  appKey,
-  serverURLs,
-});
 
 interface ILeancloudProps {
   path: string;
@@ -15,6 +8,9 @@ interface ILeancloudProps {
   exp?: boolean;
   field?: string;
 }
+
+const { appId, appKey, serverURLs } = leancloud;
+AV.init({ appId, appKey, serverURLs });
 
 const Leancloud: FC<ILeancloudProps> = ({
   model = 'Counter',

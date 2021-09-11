@@ -1,8 +1,8 @@
-import { getCurrentInstance } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
 import { WebView } from '@tarojs/components';
 
 const Webview = () => {
-  const { url } = getCurrentInstance().router.params;
+  const { url } = Taro.getCurrentInstance().router.params;
   return <WebView src={url} />;
 };
 

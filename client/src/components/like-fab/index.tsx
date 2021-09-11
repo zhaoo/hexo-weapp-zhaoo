@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, FC } from 'react';
+import { useEffect, useState, FC } from 'react';
 import { usePageScroll } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import Icon from '@/components/icon';

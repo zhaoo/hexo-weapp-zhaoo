@@ -1,4 +1,4 @@
-.history-item {
+.historyItem {
   position: relative;
   margin-bottom: 30px;
   width: 750px;
@@ -40,8 +40,8 @@
 
     .info {
       @include substr(1);
-      font-size: 0.8rem;
-      height: 1.6rem;
+      font-size: 22px;
+      height: 40px;
       color: $color-light;
     }
   }

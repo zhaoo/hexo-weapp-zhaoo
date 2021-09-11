@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro';
 
-export const setStorageSync = (key, value) => {
+export const setStorageSync = (key: string, value) => {
   try {
     Taro.setStorageSync(key, value);
   } catch (e) {
@@ -8,15 +8,15 @@ export const setStorageSync = (key, value) => {
   }
 };
 
-export const setStorageItem = (item, key) => {
+export const setStorageItem = (key: string, item) => {
   const arr = getStorageSync(key) || [];
   if (arr.indexOf(item) < 0) {
     arr.push(item);
-    setStorageSync(arr, key);
+    setStorageSync(key, arr);
   }
 };
 
-export const removeStorageSync = (key) => {
+export const removeStorageSync = (key: string) => {
   try {
     Taro.removeStorageSync(key);
   } catch (e) {
@@ -24,7 +24,7 @@ export const removeStorageSync = (key) => {
   }
 };
 
-export const getStorageSync = (key) => {
+export const getStorageSync = (key: string) => {
   try {
     const value = Taro.getStorageSync(key);
     if (value) {

@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState, FC } from 'react';
 import Taro from '@tarojs/taro';
 import {
   View,
@@ -19,17 +19,13 @@ import { leancloud } from '../../../config.json';
 import { getUserInfo } from '@/utils/index';
 import styles from './index.module.scss';
 
-const { appId, appKey, serverURLs } = leancloud;
-
-AV.init({
-  appId,
-  appKey,
-  serverURLs,
-});
 interface ICommentProps {
   model?: string;
   url: string;
 }
+
+const { appId, appKey, serverURLs } = leancloud;
+AV.init({ appId, appKey, serverURLs });
 
 const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
   const Model = AV.Object.extend(model);
@@ -37,9 +33,7 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
   const [commentVisible, setCommentVisible] = useState<boolean>(false);
   const [commentValue, setCommentValue] = useState<string>('');
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  useEffect(() => fetchData(), []);
 
   const fetchData = () => {
     Taro.cloud
@@ -69,7 +63,7 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
         {},
         {},
         false
-      ); //获取IP接口
+      ); //接口获取IP
       const ip = ipRes
         .split(' ')[4]
         .replace('"', '')
@@ -92,7 +86,7 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
         icon: 'success',
         duration: 2000,
       });
-      setTimeout(() => fetchData(), 2000);
+      setTimeout(() => fetchData());
     } catch (e) {
       showToast({
         title: '评论失败',
