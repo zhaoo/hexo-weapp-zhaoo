@@ -1,4 +1,5 @@
-import { useEffect, FC, useState } from 'react';
+import { useEffect, useState, useRef, FC } from 'react';
+import { usePageScroll } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import Icon from '@/components/icon';
 import { leancloud } from '../../../config.json';
@@ -16,6 +17,12 @@ const Counter = AV.Object.extend('Like');
 
 const LikeFab: FC<ILikeFabProps> = ({ path }) => {
   const [status, setStatus] = useState<boolean>(false);
+  const [visible, setVisible] = useState<boolean>(false);
+
+  usePageScroll((res) => {
+    const { scrollTop } = res;
+    scrollTop > 250 ? setVisible(true) : setVisible(false);
+  });
 
   useEffect(() => {
     fetchCount();
@@ -50,7 +57,11 @@ const LikeFab: FC<ILikeFabProps> = ({ path }) => {
   };
 
   return (
-    <View className={styles.likeFab} onClick={() => handleLike()}>
+    <View
+      className={styles.likeFab}
+      style={{ transform: visible ? 'translateY(0)' : 'translateY(120px)' }}
+      onClick={() => handleLike()}
+    >
       {status ? (
         <Icon size={20} name='iconheart-fill' style={{ color: '#eb3223' }} />
       ) : (
