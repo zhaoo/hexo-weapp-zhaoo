@@ -41,5 +41,6 @@
     },
     "compileType": "miniprogram",
     "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+    "libVersion": "2.19.4",
     "condition": {}
 }

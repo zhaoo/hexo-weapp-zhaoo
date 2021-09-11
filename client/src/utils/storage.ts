@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro';
 
-export const setStorageSync = (value, key) => {
+export const setStorageSync = (key, value) => {
   try {
     Taro.setStorageSync(key, value);
   } catch (e) {

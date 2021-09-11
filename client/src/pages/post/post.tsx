@@ -13,6 +13,7 @@ import Loading from '@/components/loading';
 import Leancloud from '@/components/leancloud';
 import Comment from '@/components/comment';
 import ImmersiveTitlebar from '@/components/immersive-titlebar';
+import LikeFab from '@/components/like-fab';
 import './post.scss';
 
 interface IPostProps {
@@ -163,7 +164,12 @@ const Post = () => {
                 <View className='info-item'>
                   <Icon name='iconheart' style={{ marginRight: 5 }} />
                   {post.realPath ? (
-                    <Leancloud path={post.realPath} model='Vote' exp={false} />
+                    <Leancloud
+                      path={post.realPath}
+                      model='Like'
+                      field='path'
+                      exp={false}
+                    />
                   ) : null}
                 </View>
               </View>
@@ -177,6 +183,7 @@ const Post = () => {
             />
           ) : null}
           {post.realPath ? <Comment url={post.realPath} /> : null}
+          <LikeFab path={post.realPath} />
         </View>
       ) : null}
     </>

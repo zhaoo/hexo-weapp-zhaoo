@@ -16,6 +16,7 @@ import Icon from '@/components/icon';
 import { get } from '@/apis/request';
 import AV from 'leancloud-storage/dist/av-weapp.js';
 import { leancloud } from '../../../config.json';
+import { getUserInfo } from '@/utils/index';
 import styles from './index.module.scss';
 
 const { appId, appKey, serverURLs } = leancloud;
@@ -61,10 +62,7 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
 
   const sendComment = async () => {
     if (!commentValue) return;
-    const userInfoRes = await Taro.getUserProfile({
-      desc: '用户昵称和头像将用于评论展示',
-    });
-    const { avatarUrl, nickName } = userInfoRes.userInfo;
+    const { avatarUrl, nickName } = await getUserInfo();
     try {
       const ipRes = await get(
         'https://pv.sohu.com/cityjson?ie=utf-8',
