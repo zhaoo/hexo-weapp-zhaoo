@@ -1,0 +1,25 @@
+.fab {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: $color-link;
+  color: $color-white;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+  transform: translateY(120px);
+  z-index: 5;
+}
+
+.fabVisible {
+  transform: translateY(0);
+}
+
+.fabActive {
+  transform: rotate(45deg);
+}

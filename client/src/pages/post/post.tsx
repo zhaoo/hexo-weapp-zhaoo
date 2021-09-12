@@ -13,7 +13,7 @@ import Loading from '@/components/loading';
 import Leancloud from '@/components/leancloud';
 import Comment from '@/components/comment';
 import ImmersiveTitlebar from '@/components/immersive-titlebar';
-import LikeFab from '@/components/like-fab';
+import Fab from '@/components/fab';
 import './post.scss';
 
 interface IPostProps {
@@ -173,7 +173,7 @@ const Post = () => {
             />
           ) : null}
           {post.realPath ? <Comment url={post.realPath} /> : null}
-          <LikeFab path={post.realPath} />
+          <Fab path={post.realPath} />
         </View>
       ) : null}
     </>

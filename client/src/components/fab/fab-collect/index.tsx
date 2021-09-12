@@ -1,28 +1,23 @@
 import { useEffect, useState, FC } from 'react';
-import { usePageScroll } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import Icon from '@/components/icon';
-import { leancloud } from '../../../config.json';
+import { leancloud } from '../../../../config.json';
 import AV from 'leancloud-storage/dist/av-weapp.js';
 import { getUserInfo } from '@/utils/index';
 import styles from './index.module.scss';
 
-interface ILikeFabProps {
+interface IFabCollectProps {
   path: string;
+  visible: boolean;
+  active: boolean;
 }
 
 const { appId, appKey, serverURLs } = leancloud;
 AV.init({ appId, appKey, serverURLs });
-const Counter = AV.Object.extend('Like');
+const Counter = AV.Object.extend('Collect');
 
-const LikeFab: FC<ILikeFabProps> = ({ path }) => {
+const FabCollect: FC<IFabCollectProps> = ({ path, visible, active }) => {
   const [status, setStatus] = useState<boolean>(false);
-  const [visible, setVisible] = useState<boolean>(false);
-
-  usePageScroll((res) => {
-    const { scrollTop } = res;
-    scrollTop > 250 ? setVisible(true) : setVisible(false);
-  });
 
   useEffect(() => {
     fetchCount();
@@ -58,17 +53,18 @@ const LikeFab: FC<ILikeFabProps> = ({ path }) => {
 
   return (
     <View
-      className={styles.likeFab}
-      style={{ transform: visible ? 'translateY(0)' : 'translateY(120px)' }}
+      className={`${styles.fabCollect} ${visible ? styles.fabVisible : null} ${
+        active ? styles.fabActive : null
+      }`}
       onClick={() => handleLike()}
     >
       {status ? (
-        <Icon size={20} name='iconheart-fill' style={{ color: '#eb3223' }} />
+        <Icon size={20} name='iconstar-fill' style={{ color: '#f6bf42' }} />
       ) : (
-        <Icon size={20} name='iconheart' />
+        <Icon size={20} name='iconstar' />
       )}
     </View>
   );
 };
 
-export default LikeFab;
+export default FabCollect;
