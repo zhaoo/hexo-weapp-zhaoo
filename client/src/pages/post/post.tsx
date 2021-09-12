@@ -14,19 +14,11 @@ import Leancloud from '@/components/leancloud';
 import Comment from '@/components/comment';
 import ImmersiveTitlebar from '@/components/immersive-titlebar';
 import Fab from '@/components/fab';
+import { IPostItem } from '@/types/post';
 import './post.scss';
 
-interface IPostProps {
-  title?: string;
-  more?: string;
-  cover?: string;
-  date: string;
-  excerpt: string;
-  realPath: string;
-}
-
 const Post = () => {
-  const [post, setPost] = useState<IPostProps>({});
+  const [post, setPost] = useState<IPostItem>({});
   const [status, setStatus] = useState<string>('loading');
   const [images, setImages] = useState<string[]>([]);
   const [slug] = useState<string>(
@@ -173,7 +165,7 @@ const Post = () => {
             />
           ) : null}
           {post.realPath ? <Comment url={post.realPath} /> : null}
-          <Fab path={post.realPath} />
+          <Fab post={post} />
         </View>
       ) : null}
     </>

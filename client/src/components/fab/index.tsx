@@ -3,14 +3,14 @@ import { usePageScroll } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import Icon from '@/components/icon';
 import FabLike from './fab-like';
-import FabCollect from './fab-collect';
+import { IPostItem } from '@/types/post';
 import styles from './index.module.scss';
 
 interface IFabProps {
-  path: string;
+  post: IPostItem;
 }
 
-const Fab: FC<IFabProps> = ({ path }) => {
+const Fab: FC<IFabProps> = ({ post }) => {
   const [visible, setVisible] = useState<boolean>(false);
   const [active, setActive] = useState<boolean>(false);
 
@@ -34,8 +34,7 @@ const Fab: FC<IFabProps> = ({ path }) => {
       >
         <Icon size={20} name='iconplus' />
       </View>
-      <FabLike path={path} visible={visible} active={active} />
-      <FabCollect path={path} visible={visible} active={active} />
+      <FabLike post={post} visible={visible} active={active} />
     </>
   );
 };

@@ -41,6 +41,12 @@
                     "pathName": "pages/comment/comment",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "pages/like/like",
+                    "pathName": "pages/like/like",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

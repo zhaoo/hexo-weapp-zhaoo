@@ -34,3 +34,8 @@ export const getUserInfo = async (): Promise<{
     return userInfo;
   }
 };
+
+export const filterHtml = (str) => {
+  var re = /<[^>]+>/gi;
+  return str.replace(re, '');
+};
