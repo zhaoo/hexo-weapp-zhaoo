@@ -34,7 +34,12 @@ const Fab: FC<IFabProps> = ({ post }) => {
       >
         <Icon size={20} name='iconplus' />
       </View>
-      <FabLike post={post} visible={visible} active={active} />
+      <FabLike
+        post={post}
+        visible={visible}
+        active={active}
+        canRemove={false}
+      />
     </>
   );
 };

@@ -1,4 +1,5 @@
 import { useEffect, useState, FC } from 'react';
+import Taro, { showToast } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import Icon from '@/components/icon';
 import { leancloud } from '../../../../config.json';
@@ -11,13 +12,19 @@ interface IFabLikeProps {
   post: IPostItem;
   visible: boolean;
   active: boolean;
+  canRemove?: boolean;
 }
 
 const { appId, appKey, serverURLs } = leancloud;
 AV.init({ appId, appKey, serverURLs });
 const Counter = AV.Object.extend('Like');
 
-const FabLike: FC<IFabLikeProps> = ({ post, visible, active }) => {
+const FabLike: FC<IFabLikeProps> = ({
+  post,
+  visible,
+  active,
+  canRemove = true,
+}) => {
   const [status, setStatus] = useState<boolean>(false);
 
   useEffect(() => {
@@ -27,7 +34,7 @@ const FabLike: FC<IFabLikeProps> = ({ post, visible, active }) => {
   const fetchCount = async () => {
     const query = new AV.Query(Counter);
     const { nickName } = await getUserInfo();
-    query.equalTo('path', post.path).equalTo('nickName', nickName);
+    query.equalTo('path', post.realPath).equalTo('nickName', nickName);
     const res: number = await query.count();
     if (res > 0) {
       setStatus(true);
@@ -35,15 +42,29 @@ const FabLike: FC<IFabLikeProps> = ({ post, visible, active }) => {
   };
 
   const handleLike = async () => {
-    const { nickName } = await getUserInfo();
-    status ? removeCount(nickName) : addCount(nickName);
+    const { nickName, avatarUrl } = await getUserInfo();
+    if (status) {
+      if (!canRemove) {
+        showToast({
+          icon: 'none',
+          title: '小心心不可以收回哦~',
+          duration: 2000,
+        });
+        return;
+      }
+      removeCount(nickName);
+    } else {
+      addCount(nickName, avatarUrl);
+    }
+    setTimeout(() => Taro.eventCenter.trigger('refreshLeancloud', 'Like'), 100);
   };
 
-  const addCount = async (nickName: string) => {
+  const addCount = async (nickName: string, weappAvatar: string) => {
     const query = new Counter();
     query
       .save({
         nickName,
+        weappAvatar,
         slug: post.slug,
         path: post.realPath,
         title: post.title,
