@@ -33,7 +33,15 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
   const [commentVisible, setCommentVisible] = useState<boolean>(false);
   const [commentValue, setCommentValue] = useState<string>('');
 
-  useEffect(() => fetchData(), []);
+  useEffect(() => {
+    fetchData();
+    Taro.eventCenter.on('changeCommentVisible', () =>
+      setCommentVisible(!commentVisible)
+    );
+    return () => {
+      Taro.eventCenter.off('changeCommentVisible');
+    };
+  }, []);
 
   const fetchData = () => {
     Taro.cloud

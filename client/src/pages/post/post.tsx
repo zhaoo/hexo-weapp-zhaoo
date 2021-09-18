@@ -12,6 +12,7 @@ import Icon from '@/components/icon';
 import Loading from '@/components/loading';
 import Leancloud from '@/components/leancloud';
 import Comment from '@/components/comment';
+import Donate from '@/components/donate';
 import ImmersiveTitlebar from '@/components/immersive-titlebar';
 import Fab from '@/components/fab';
 import { IPostItem } from '@/types/post';
@@ -21,6 +22,7 @@ const Post = () => {
   const [post, setPost] = useState<IPostItem>({});
   const [status, setStatus] = useState<string>('loading');
   const [images, setImages] = useState<string[]>([]);
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [slug] = useState<string>(
     getCurrentInstance().router?.params.slug || ''
   );
@@ -168,6 +170,7 @@ const Post = () => {
           <Fab post={post} />
         </View>
       ) : null}
+      <Donate visible={modalVisible} setVisible={setModalVisible} />
     </>
   );
 };

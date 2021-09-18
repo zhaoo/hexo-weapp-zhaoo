@@ -38,7 +38,14 @@ const CommentList: FC<ICommentListProps> = ({
     if (!needJump) return;
     url = url.split(/[/]\d{4}[/]\d{2}[/]\d{2}[/]/)[1];
     url = url.substr(0, url.length - 1);
-    Taro.navigateTo({ url: `/pages/post/post?slug=${url}` });
+    Taro.navigateTo({
+      url: `/pages/post/post?slug=${url}`,
+      success: () =>
+        setTimeout(
+          () => Taro.eventCenter.trigger('changeCommentVisible'),
+          1000
+        ),
+    });
   };
 
   return (

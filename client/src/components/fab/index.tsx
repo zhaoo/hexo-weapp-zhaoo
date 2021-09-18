@@ -3,6 +3,7 @@ import { usePageScroll } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import Icon from '@/components/icon';
 import FabLike from './fab-like';
+import FabComment from './fab-comment';
 import { IPostItem } from '@/types/post';
 import styles from './index.module.scss';
 
@@ -40,6 +41,7 @@ const Fab: FC<IFabProps> = ({ post }) => {
         active={active}
         canRemove={false}
       />
+      <FabComment visible={visible} active={active} />
     </>
   );
 };

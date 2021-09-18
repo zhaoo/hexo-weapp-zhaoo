@@ -5,16 +5,14 @@ import {
   Image,
   OpenData,
   Text,
-  Swiper,
-  SwiperItem,
   Button,
   OfficialAccount,
 } from '@tarojs/components';
 import Icon from '@/components/icon';
 import List from '@/components/list';
-import Modal from '@/components/modal';
+import Donate from '@/components/donate';
 import { get } from '@/apis/request';
-import { webUrl, donate, motto } from '../../../config.json';
+import { webUrl, motto } from '../../../config.json';
 import styles from './my.module.scss';
 
 const My = () => {
@@ -167,34 +165,7 @@ const My = () => {
           />
         </View>
       </View>
-      <Modal
-        visible={modalVisible}
-        setVisible={setModalVisible}
-        content={
-          <Swiper
-            className={styles.donate}
-            indicatorColor='#999'
-            indicatorActiveColor='#fff'
-            circular
-            indicatorDots
-          >
-            <SwiperItem>
-              <Image
-                className={styles.image}
-                src={donate?.wechat}
-                mode='aspectFill'
-              />
-            </SwiperItem>
-            <SwiperItem>
-              <Image
-                className={styles.image}
-                src={donate?.alipay}
-                mode='aspectFill'
-              />
-            </SwiperItem>
-          </Swiper>
-        }
-      />
+      <Donate visible={modalVisible} setVisible={setModalVisible} />
     </>
   );
 };
