@@ -5,17 +5,14 @@ import {
   Image,
   OpenData,
   Text,
-  Swiper,
-  SwiperItem,
   Button,
   OfficialAccount,
 } from '@tarojs/components';
 import Icon from '@/components/icon';
 import List from '@/components/list';
-import ColorSwitch from '@/components/color-switch';
-import Modal from '@/components/modal';
+import Donate from '@/components/donate';
 import { get } from '@/apis/request';
-import { webUrl, donate, motto } from '../../../config.json';
+import { webUrl, motto } from '../../../config.json';
 import styles from './my.module.scss';
 
 const My = () => {
@@ -93,13 +90,13 @@ const My = () => {
             className={styles.tabnavItem}
             onClick={() => Taro.navigateTo({ url: `/pages/history/history` })}
           >
-            <Icon type='image' name='clock' size={30} />
-            <Text className={styles.text}>历史</Text>
+            <Icon type='image' name='tag' size={30} />
+            <Text className={styles.text}>收藏</Text>
           </View>
           <view className={styles.divide} />
           <View
             className={styles.tabnavItem}
-            onClick={() => Taro.navigateTo({ url: `/pages/history/history` })}
+            onClick={() => Taro.navigateTo({ url: `/pages/like/like` })}
           >
             <Icon type='image' name='like' size={30} />
             <Text className={styles.text}>喜欢</Text>
@@ -129,13 +126,19 @@ const My = () => {
           </Button>
         </View>
         <View className={styles.listWrapper}>
+          {/* <List title='夜间模式' icon='moon' rightChildren={<ColorSwitch />} /> */}
           <List
             title='全部评论'
             icon='message'
             arrow
             onClick={() => Taro.navigateTo({ url: `/pages/comment/comment` })}
           />
-          {/* <List title='夜间模式' icon='moon' rightChildren={<ColorSwitch />} /> */}
+          <List
+            title='浏览历史'
+            icon='time'
+            arrow
+            onClick={() => Taro.navigateTo({ url: `/pages/history/history` })}
+          />
           <List
             title='网页博客'
             icon='cloud'
@@ -162,34 +165,7 @@ const My = () => {
           />
         </View>
       </View>
-      <Modal
-        visible={modalVisible}
-        setVisible={setModalVisible}
-        content={
-          <Swiper
-            className={styles.donate}
-            indicatorColor='#999'
-            indicatorActiveColor='#fff'
-            circular
-            indicatorDots
-          >
-            <SwiperItem>
-              <Image
-                className={styles.image}
-                src={donate?.wechat}
-                mode='aspectFill'
-              />
-            </SwiperItem>
-            <SwiperItem>
-              <Image
-                className={styles.image}
-                src={donate?.alipay}
-                mode='aspectFill'
-              />
-            </SwiperItem>
-          </Swiper>
-        }
-      />
+      <Donate visible={modalVisible} setVisible={setModalVisible} />
     </>
   );
 };

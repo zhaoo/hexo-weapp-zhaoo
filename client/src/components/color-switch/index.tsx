@@ -8,7 +8,7 @@ interface ColorSwitchProps {
 }
 
 const ColorSwitch: FC<ColorSwitchProps> = ({ checked = false, onChange }) => {
-  const [state, setState] = useState(checked);
+  const [state, setState] = useState<boolean>(checked);
 
   useEffect(() => {
     if (!onChange) return;

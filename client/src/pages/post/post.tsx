@@ -12,22 +12,17 @@ import Icon from '@/components/icon';
 import Loading from '@/components/loading';
 import Leancloud from '@/components/leancloud';
 import Comment from '@/components/comment';
+import Donate from '@/components/donate';
 import ImmersiveTitlebar from '@/components/immersive-titlebar';
+import Fab from '@/components/fab';
+import { IPostItem } from '@/types/post';
 import './post.scss';
 
-interface IPostProps {
-  title?: string;
-  more?: string;
-  cover?: string;
-  date: string;
-  excerpt: string;
-  realPath: string;
-}
-
 const Post = () => {
-  const [post, setPost] = useState<IPostProps>({});
+  const [post, setPost] = useState<IPostItem>({});
   const [status, setStatus] = useState<string>('loading');
   const [images, setImages] = useState<string[]>([]);
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [slug] = useState<string>(
     getCurrentInstance().router?.params.slug || ''
   );
@@ -49,16 +44,6 @@ const Post = () => {
       imageUrl: post.cover,
     };
   });
-
-  // usePageScroll((res) => {
-  //   const { scrollTop } = res;
-  //   if (scrollRef.current - scrollTop > 0) {
-  //     setBottomBarVisible(true);
-  //   } else {
-  //     setBottomBarVisible(false);
-  //   }
-  //   scrollRef.current = scrollTop;
-  // });
 
   const fetchPost = async () => {
     const data = await getPostBySlug(slug);
@@ -102,7 +87,7 @@ const Post = () => {
       }
     });
     arr.push(data);
-    setStorageSync(arr, key);
+    setStorageSync(key, arr);
   };
 
   const handleClick = (e) => {
@@ -163,7 +148,12 @@ const Post = () => {
                 <View className='info-item'>
                   <Icon name='iconheart' style={{ marginRight: 5 }} />
                   {post.realPath ? (
-                    <Leancloud path={post.realPath} model='Vote' exp={false} />
+                    <Leancloud
+                      path={post.realPath}
+                      model='Like'
+                      field='path'
+                      exp={false}
+                    />
                   ) : null}
                 </View>
               </View>
@@ -177,8 +167,10 @@ const Post = () => {
             />
           ) : null}
           {post.realPath ? <Comment url={post.realPath} /> : null}
+          <Fab post={post} />
         </View>
       ) : null}
+      <Donate visible={modalVisible} setVisible={setModalVisible} />
     </>
   );
 };

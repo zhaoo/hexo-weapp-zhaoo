@@ -1,12 +1,5 @@
 import { FC, useEffect, useRef, useState } from 'react';
-import {
-  usePageScroll,
-  getSystemInfo,
-  getMenuButtonBoundingClientRect,
-  navigateBack,
-  switchTab,
-  pageScrollTo,
-} from '@tarojs/taro';
+import Taro, { usePageScroll } from '@tarojs/taro';
 import { Text, View } from '@tarojs/components';
 import Icon from '@/components/icon';
 import styles from './index.module.scss';
@@ -22,10 +15,10 @@ const ImmersiveTitlebar: FC<IImmersiveTitlebarProps> = ({ title }) => {
   >([44, 44, 88]);
 
   useEffect(() => {
-    getSystemInfo().then((e) => {
+    Taro.getSystemInfo().then((e) => {
       let customBar, headerBar;
       const { statusBarHeight, system } = e;
-      let rect = getMenuButtonBoundingClientRect();
+      let rect = Taro.getMenuButtonBoundingClientRect();
       if (system.toLowerCase().indexOf('ios') > -1) {
         customBar = rect.bottom + (rect.top - statusBarHeight) * 2;
         headerBar = customBar - statusBarHeight;
@@ -50,7 +43,7 @@ const ImmersiveTitlebar: FC<IImmersiveTitlebarProps> = ({ title }) => {
       ref={titlebarRef}
       style={{ height: titlebarHeight[2] }}
       onClick={() =>
-        pageScrollTo({
+        Taro.pageScrollTo({
           scrollTop: 0,
           duration: 300,
         })
@@ -63,7 +56,9 @@ const ImmersiveTitlebar: FC<IImmersiveTitlebarProps> = ({ title }) => {
           size={18}
           style={{ marginRight: 5 }}
           onClick={() =>
-            navigateBack().catch(() => switchTab({ url: '/pages/home/home' }))
+            Taro.navigateBack().catch(() =>
+              Taro.switchTab({ url: '/pages/home/home' })
+            )
           }
         />
         <Text className={styles.title}>{title}</Text>

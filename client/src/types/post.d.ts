@@ -6,10 +6,12 @@ export interface IPostItem {
   cover: string;
   date: string;
   comments: boolean;
-  content?: string;
+  content: string;
   raw?: string;
   tags?: string;
   updated?: string;
   categories?: { name: string; path: string }[];
   top?: number;
+  realPath?: string;
+  more?: string;
 }

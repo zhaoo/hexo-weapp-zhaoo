@@ -1,10 +1,10 @@
 import { View, Image } from '@tarojs/components';
 import loading from '@/assets/images/loading.gif';
-import './index.scss';
+import styles from './index.module.scss';
 
 const Loading = () => {
   return (
-    <View className='loading'>
+    <View className={styles.loading}>
       <Image src={loading} mode='center' />
     </View>
   );

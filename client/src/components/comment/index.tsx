@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState, FC } from 'react';
 import Taro from '@tarojs/taro';
 import {
   View,
@@ -16,19 +16,16 @@ import Icon from '@/components/icon';
 import { get } from '@/apis/request';
 import AV from 'leancloud-storage/dist/av-weapp.js';
 import { leancloud } from '../../../config.json';
+import { getUserInfo } from '@/utils/index';
 import styles from './index.module.scss';
 
-const { appId, appKey, serverURLs } = leancloud;
-
-AV.init({
-  appId,
-  appKey,
-  serverURLs,
-});
 interface ICommentProps {
   model?: string;
   url: string;
 }
+
+const { appId, appKey, serverURLs } = leancloud;
+AV.init({ appId, appKey, serverURLs });
 
 const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
   const Model = AV.Object.extend(model);
@@ -38,6 +35,12 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
 
   useEffect(() => {
     fetchData();
+    Taro.eventCenter.on('changeCommentVisible', () =>
+      setCommentVisible(!commentVisible)
+    );
+    return () => {
+      Taro.eventCenter.off('changeCommentVisible');
+    };
   }, []);
 
   const fetchData = () => {
@@ -61,17 +64,14 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
 
   const sendComment = async () => {
     if (!commentValue) return;
-    const userInfoRes = await Taro.getUserProfile({
-      desc: '用户昵称和头像将用于评论展示',
-    });
-    const { avatarUrl, nickName } = userInfoRes.userInfo;
+    const { avatarUrl, nickName } = await getUserInfo();
     try {
       const ipRes = await get(
         'https://pv.sohu.com/cityjson?ie=utf-8',
         {},
         {},
         false
-      ); //获取IP接口
+      ); //接口获取IP
       const ip = ipRes
         .split(' ')[4]
         .replace('"', '')
@@ -94,7 +94,7 @@ const Comment: FC<ICommentProps> = ({ model = 'Comment', url }) => {
         icon: 'success',
         duration: 2000,
       });
-      setTimeout(() => fetchData(), 2000);
+      setTimeout(() => fetchData());
     } catch (e) {
       showToast({
         title: '评论失败',

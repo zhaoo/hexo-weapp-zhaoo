@@ -3,7 +3,7 @@ import Taro from '@tarojs/taro';
 import { Canvas, View } from '@tarojs/components';
 import lottie from 'lottie-miniprogram';
 import loading from '@/assets/lottie/loading.json';
-import './index.scss';
+import styles from './index.module.scss';
 
 const LottieLoading = () => {
   const canvasRef = useRef(null);
@@ -28,8 +28,8 @@ const LottieLoading = () => {
   }, []);
 
   return (
-    <View className='lottie-load'>
-      <Canvas id='canvas' ref={canvasRef} type='2d' className='canvas' />
+    <View className={styles.lottieLoad}>
+      <Canvas id='canvas' ref={canvasRef} type='2d' />
     </View>
   );
 };

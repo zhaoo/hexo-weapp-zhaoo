@@ -1,0 +1,13 @@
+.like {
+  width: 750px;
+  min-height: 100vh;
+  padding: 30px 0;
+  background-color: $color-background-deep;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 5px;
+}
