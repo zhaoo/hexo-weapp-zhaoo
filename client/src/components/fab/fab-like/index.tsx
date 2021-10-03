@@ -1,5 +1,5 @@
 import { useEffect, useState, FC } from 'react';
-import Taro, { showToast } from '@tarojs/taro';
+import Taro, { showToast, vibrateShort } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import Icon from '@/components/icon';
 import { leancloud } from '../../../../config.json';
@@ -42,6 +42,7 @@ const FabLike: FC<IFabLikeProps> = ({
   };
 
   const handleLike = async () => {
+    vibrateShort();
     const { nickName, avatarUrl } = await getUserInfo();
     if (status) {
       if (!canRemove) {
