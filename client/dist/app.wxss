@@ -1,0 +1,2 @@
+page{font-family:'Hiragino Sans GB','Hiragino Sans GB W3','Microsoft YaHei','WenQuanYi Micro Hei',sans-serif}scroll-view,text,view{-webkit-box-sizing:border-box;box-sizing:border-box}button:after{display:none}
+@import "./common.wxss";

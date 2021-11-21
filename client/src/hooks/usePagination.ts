@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react';
-import Taro, { useReachBottom, usePullDownRefresh } from '@tarojs/taro';
+import {
+  useReachBottom,
+  usePullDownRefresh,
+  vibrateShort,
+  stopPullDownRefresh,
+} from '@tarojs/taro';
 import { getPosts } from '@/apis/api';
 import { IPostItem } from '@/types/post';
 
@@ -14,17 +19,22 @@ const usePagination: IUsePagination = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (hasMore) {
-      setIsLoading(true);
-      fetchData();
-    }
+    if (!hasMore) return;
+    setIsLoading(true);
+    fetchData();
   }, [pageSize]);
 
   // 触底无限加载
-  useReachBottom(() => getMoreData());
+  useReachBottom(() => {
+    getMoreData();
+    vibrateShort();
+  });
 
   // 下拉刷新
-  usePullDownRefresh(() => refresh());
+  usePullDownRefresh(() => {
+    refresh();
+    vibrateShort();
+  });
 
   const fetchData = async () => {
     const { data, pageCount } = (await getPosts(pageSize)) || {};
@@ -36,7 +46,7 @@ const usePagination: IUsePagination = () => {
         : setCurrentData(data);
     }
     setIsLoading(false);
-    Taro.stopPullDownRefresh();
+    stopPullDownRefresh();
   };
 
   const getMoreData = () => setPageSize(pageSize + 1);
@@ -45,6 +55,7 @@ const usePagination: IUsePagination = () => {
     setCurrentData([]);
     setHasMore(true);
     setPageSize(1);
+    fetchData();
   };
 
   return [currentData, hasMore, isLoading];

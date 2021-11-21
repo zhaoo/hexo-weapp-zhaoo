@@ -24,7 +24,7 @@ const My = () => {
 
   useEffect(() => {
     fetchMotto();
-    banner3d();
+    // banner3d();
   }, []);
 
   useEffect(() => {
