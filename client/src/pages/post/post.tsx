@@ -16,6 +16,7 @@ import Donate from '@/components/donate';
 import ImmersiveTitlebar from '@/components/immersive-titlebar';
 import Fab from '@/components/fab';
 import { IPostItem } from '@/types/post';
+import { comment } from '../../../config.json';
 import './post.scss';
 
 const Post = () => {
@@ -166,7 +167,9 @@ const Post = () => {
               className='content'
             />
           ) : null}
-          {post.realPath ? <Comment url={post.realPath} /> : null}
+          {comment.enable && post.realPath ? (
+            <Comment url={post.realPath} />
+          ) : null}
           <Fab post={post} />
         </View>
       ) : null}

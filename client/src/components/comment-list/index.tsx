@@ -1,3 +1,7 @@
+/*
+ * @Descripttion: 评论列表组件
+ */
+
 import { useState, FC } from 'react';
 import Taro from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';

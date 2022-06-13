@@ -1,3 +1,7 @@
+/*
+ * @Descripttion: 浏览历史页
+ */
+
 import { useEffect, useState } from 'react';
 import { View, Text } from '@tarojs/components';
 import LiteLoading from '@/components/lite-loading';

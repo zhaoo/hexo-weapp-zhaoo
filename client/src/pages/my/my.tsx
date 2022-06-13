@@ -1,3 +1,7 @@
+/*
+ * @Descripttion: 用户页
+ */
+
 import { useState, useEffect, useRef } from 'react';
 import Taro from '@tarojs/taro';
 import {
@@ -12,7 +16,7 @@ import Icon from '@/components/icon';
 import List from '@/components/list';
 import Donate from '@/components/donate';
 import { get } from '@/apis/request';
-import { webUrl, motto } from '../../../config.json';
+import { webUrl, motto, comment } from '../../../config.json';
 import styles from './my.module.scss';
 
 const My = () => {
@@ -127,12 +131,14 @@ const My = () => {
         </View>
         <View className={styles.listWrapper}>
           {/* <List title='夜间模式' icon='moon' rightChildren={<ColorSwitch />} /> */}
-          <List
-            title='全部评论'
-            icon='message'
-            arrow
-            onClick={() => Taro.navigateTo({ url: `/pages/comment/comment` })}
-          />
+          {comment.enable ? (
+            <List
+              title='全部评论'
+              icon='message'
+              arrow
+              onClick={() => Taro.navigateTo({ url: `/pages/comment/comment` })}
+            />
+          ) : null}
           <List
             title='浏览历史'
             icon='time'
@@ -140,7 +146,7 @@ const My = () => {
             onClick={() => Taro.navigateTo({ url: `/pages/history/history` })}
           />
           <List
-            title='网页博客'
+            title='博客网站'
             icon='cloud'
             arrow
             onClick={() =>

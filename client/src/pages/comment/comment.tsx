@@ -1,3 +1,7 @@
+/*
+ * @Descripttion: 评论页
+ */
+
 import { useEffect, useState } from 'react';
 import Taro, { useReachBottom } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';

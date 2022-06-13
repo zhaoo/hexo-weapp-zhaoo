@@ -1,3 +1,7 @@
+/*
+ * @Descripttion: 沉浸式状态栏组件
+ */
+
 import { FC, useEffect, useRef, useState } from 'react';
 import Taro, { usePageScroll } from '@tarojs/taro';
 import { Text, View } from '@tarojs/components';

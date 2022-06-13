@@ -1,3 +1,7 @@
+/*
+ * @Descripttion: 工具函数封装
+ */
+
 import Taro from '@tarojs/taro';
 import { setStorageSync, getStorageSync } from '@/utils/storage';
 

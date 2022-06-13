@@ -1,3 +1,7 @@
+/*
+ * @Descripttion: 本地存储函数封装
+ */
+
 import Taro from '@tarojs/taro';
 
 export const setStorageSync = (key: string, value) => {

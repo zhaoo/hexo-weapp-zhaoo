@@ -1,3 +1,7 @@
+/*
+ * @Descripttion: 首页
+ */
+
 import { useShareAppMessage } from '@tarojs/taro';
 import { ScrollView } from '@tarojs/components';
 import usePagination from '@/hooks/usePagination';

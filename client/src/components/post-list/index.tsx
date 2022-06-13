@@ -1,3 +1,7 @@
+/*
+ * @Descripttion: 文章列表组件
+ */
+
 import { FC, ReactNode } from 'react';
 import Taro from '@tarojs/taro';
 import { View, Image, Text } from '@tarojs/components';

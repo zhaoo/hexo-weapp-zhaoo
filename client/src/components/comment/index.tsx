@@ -1,3 +1,7 @@
+/*
+ * @Descripttion: 评论组件
+ */
+
 import { useEffect, useState, FC } from 'react';
 import Taro from '@tarojs/taro';
 import {

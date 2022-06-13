@@ -1,3 +1,7 @@
+/*
+ * @Descripttion: 网络请求封装
+ */
+
 import Taro from '@tarojs/taro';
 import { HTTP_STATUS } from '@/constants/index';
 import { baseUrl } from '../../config.json';

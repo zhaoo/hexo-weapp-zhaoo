@@ -1,3 +1,7 @@
+/*
+ * @Descripttion: 浮层组件
+ */
+
 import { FC, useEffect, useState, CSSProperties } from 'react';
 import { View } from '@tarojs/components';
 import styles from './index.module.scss';

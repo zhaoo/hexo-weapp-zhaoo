@@ -1,3 +1,7 @@
+/*
+ * @Descripttion: 相册分类页
+ */
+
 import { useState, useEffect } from 'react';
 import { useShareTimeline, useShareAppMessage } from '@tarojs/taro';
 import { View } from '@tarojs/components';

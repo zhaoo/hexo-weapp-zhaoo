@@ -1,3 +1,7 @@
+/*
+ * @Descripttion: 相册页
+ */
+
 import { useEffect, useState } from 'react';
 import Taro, {
   getCurrentInstance,
