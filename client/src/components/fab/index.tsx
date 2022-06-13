@@ -1,9 +1,18 @@
+/*
+ * @Descripttion: Fab
+ * @Author: 兆兆
+ * @Date: 2021-09-12 10:56:02
+ * @LastEditors: 兆兆
+ * @LastEditTime: 2022-06-13 21:38:47
+ */
+
 import { useState, FC } from 'react';
 import { usePageScroll } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import Icon from '@/components/icon';
 import FabLike from './fab-like';
 import FabComment from './fab-comment';
+import { comment } from '../../../config.json';
 import { IPostItem } from '@/types/post';
 import styles from './index.module.scss';
 
@@ -41,7 +50,7 @@ const Fab: FC<IFabProps> = ({ post }) => {
         active={active}
         canRemove={false}
       />
-      <FabComment visible={visible} active={active} />
+      {comment.enable ? <FabComment visible={visible} active={active} /> : null}
     </>
   );
 };
